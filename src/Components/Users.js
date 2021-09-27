@@ -35,10 +35,9 @@ export default function Users({
                 setUsers(response?.data?.data);
                 const output = [];
                 for (let i = 0; i < 10; i++) {
-                    output.push(Users[i]);
+                    output.push(response?.data?.data[i]);
                 }
                 setDisplayUsers(output);
-                console.log(DisplayUsers);
             })
             .catch((error) => {
                 console.log(error);
@@ -86,7 +85,7 @@ export default function Users({
 
                         const ids = DisplayUsers.map((User) => User.id);
                         const index2 = ids.findIndex((id) => id === newUser.id);
-                        console.log(index2);
+                        // console.log(index2);
 
                         if (index2 === -1) {
                             const DisplayUsersCopy = [...DisplayUsers];
@@ -112,7 +111,11 @@ export default function Users({
                     }
                 }}
             >
-                <input type="text" ref={addUserRef} />
+                <input
+                    type="text"
+                    ref={addUserRef}
+                    placeholder="jason@bubble.com"
+                />
                 <button>Add</button>
             </form>
 

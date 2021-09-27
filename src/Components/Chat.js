@@ -110,7 +110,13 @@ export default function Chat({
                         });
                 }}
             >
-                <input type="text" ref={sendMessageRef} />
+                <input
+                    type="text"
+                    ref={sendMessageRef}
+                    placeholder={
+                        DisplayChatName ? "Message " + DisplayChatName : null
+                    }
+                />
                 <button>Send</button>
             </form>
         </>

@@ -163,7 +163,11 @@ export default function Channels({
                                 });
                         }}
                     >
-                        <input type="text" ref={newChannelRef} />
+                        <input
+                            type="text"
+                            ref={newChannelRef}
+                            placeholder="Channel name"
+                        />
                         <button>Create</button>
                     </form>
                 </>

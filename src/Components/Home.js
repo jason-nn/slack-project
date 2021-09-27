@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logout from "./Logout";
 import Channels from "./Channels";
 import Users from "./Users";
 import Chat from "./Chat";
+import ChatInfo from "./ChatInfo";
+import axios from "axios";
 
 export default function Home({
     setUserData,
@@ -18,6 +20,29 @@ export default function Home({
     const [DisplayChatName, setDisplayChatName] = useState(null);
     const [DisplayChatID, setDisplayChatID] = useState(null);
     const [DisplayChatClass, setDisplayChatClass] = useState(null);
+    const [AllUsers, setAllUsers] = useState(null);
+
+    useEffect(() => {
+        let config = {
+            method: "get",
+            url: "users",
+            headers: {
+                "access-token": UserHeaders["access-token"],
+                client: UserHeaders.client,
+                expiry: UserHeaders.expiry,
+                uid: UserHeaders.uid,
+            },
+        };
+
+        axios(config)
+            .then((response) => {
+                // console.log("response", response);
+                setAllUsers(response?.data?.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     return (
         <>
@@ -85,9 +110,21 @@ export default function Home({
                 DisplayChat={DisplayChat}
                 DisplayChatName={DisplayChatName}
                 DisplayChatID={DisplayChatID}
-                UserHeaders={UserHeaders}
                 DisplayChatClass={DisplayChatClass}
                 setDisplayChat={(i) => setDisplayChat(i)}
+            />
+
+            <br />
+            <div>------------------------------</div>
+            <br />
+
+            <ChatInfo
+                UserData={UserData}
+                UserHeaders={UserHeaders}
+                DisplayChatName={DisplayChatName}
+                DisplayChatID={DisplayChatID}
+                DisplayChatClass={DisplayChatClass}
+                AllUsers={AllUsers}
             />
 
             <br />
