@@ -10,6 +10,7 @@ export default function ChatInfo({
     AllUsers,
 }) {
     // console.log(AllUsers);
+    // console.log(DisplayChatID);
     const icons = ["Icon_1.png", "Icon_2.png", "Icon_3.png"];
     const avatars = [
         "Avatar_1.png",
@@ -46,9 +47,9 @@ export default function ChatInfo({
         if (DisplayChatClass === "Channel") {
             axios(config)
                 .then((response) => {
-                    console.log("response", response);
+                    // console.log("response", response);
                     setChannelMembers(response?.data?.data["channel_members"]);
-                    console.log("ChannelMembers", ChannelMembers);
+                    // console.log("ChannelMembers", ChannelMembers);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -102,7 +103,7 @@ export default function ChatInfo({
 
             {DisplayChatClass === "Channel" ? (
                 <>
-                    <div>Channel info</div>
+                    <div>Members</div>
                     <br />
                     {ChannelMembers ? (
                         <>
