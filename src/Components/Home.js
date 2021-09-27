@@ -125,6 +125,9 @@ export default function Home({
                 DisplayChatID={DisplayChatID}
                 DisplayChatClass={DisplayChatClass}
                 AllUsers={AllUsers}
+                setMessage={(i) => setMessage(i)}
+                setSuccess={(i) => setSuccess(i)}
+                setError={(i) => setError(i)}
             />
 
             <br />

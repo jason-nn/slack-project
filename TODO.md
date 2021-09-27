@@ -1,6 +1,4 @@
-1. Right panel
-2. Invite user to channel
-3. Search for invite user | add user to chat
-4. Design desktop
-5. Design mobile
-6. Error validation (optional)
+1. Design desktop
+2. Search for invite user | add user to chat
+3. Design mobile
+4. Error validation (optional)
