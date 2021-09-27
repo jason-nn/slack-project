@@ -33,34 +33,37 @@ export default function Users({
             .then((response) => {
                 // console.log("response", response);
                 setUsers(response?.data?.data);
+                const output = [];
+                for (let i = 0; i < 10; i++) {
+                    output.push(Users[i]);
+                }
+                setDisplayUsers(output);
+                console.log(DisplayUsers);
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
 
-    useEffect(() => {
-        if (Users) {
-            const output = [];
+    function renderUsers() {
+        const output = [];
 
-            for (let i = 0; i < 10; i++) {
-                output.push(
-                    <User
-                        UserHeaders={UserHeaders}
-                        DisplayChat={DisplayChat}
-                        key={Users[i].id}
-                        data={Users[i]}
-                        setDisplayChat={(i) => setDisplayChat(i)}
-                        setDisplayChatName={(i) => setDisplayChatName(i)}
-                        setDisplayChatID={(i) => setDisplayChatID(i)}
-                        setDisplayChatClass={(i) => setDisplayChatClass(i)}
-                    />
-                );
-            }
-
-            setDisplayUsers(output);
+        for (let i = 0; i < DisplayUsers.length; i++) {
+            output.push(
+                <User
+                    UserHeaders={UserHeaders}
+                    DisplayChat={DisplayChat}
+                    key={DisplayUsers[i].id}
+                    data={DisplayUsers[i]}
+                    setDisplayChat={(i) => setDisplayChat(i)}
+                    setDisplayChatName={(i) => setDisplayChatName(i)}
+                    setDisplayChatID={(i) => setDisplayChatID(i)}
+                    setDisplayChatClass={(i) => setDisplayChatClass(i)}
+                />
+            );
         }
-    }, [Users]);
+        return output;
+    }
 
     return (
         <>
@@ -81,31 +84,28 @@ export default function Users({
                     if (index > -1) {
                         const newUser = Users[index];
 
-                        const DisplayUsersCopy = [...DisplayUsers];
-                        DisplayUsersCopy.unshift(
-                            <User
-                                UserHeaders={UserHeaders}
-                                DisplayChat={DisplayChat}
-                                key={newUser.id}
-                                data={newUser}
-                                setDisplayChat={(i) => setDisplayChat(i)}
-                                setDisplayChatName={(i) =>
-                                    setDisplayChatName(i)
-                                }
-                                setDisplayChatID={(i) => setDisplayChatID(i)}
-                                setDisplayChatClass={(i) =>
-                                    setDisplayChatClass(i)
-                                }
-                            />
-                        );
-                        DisplayUsersCopy.pop();
-                        setDisplayUsers(DisplayUsersCopy);
+                        const ids = DisplayUsers.map((User) => User.id);
+                        const index2 = ids.findIndex((id) => id === newUser.id);
+                        console.log(index2);
 
-                        addUserRef.current.value = null;
+                        if (index2 === -1) {
+                            const DisplayUsersCopy = [...DisplayUsers];
+                            DisplayUsersCopy.unshift(newUser);
+                            DisplayUsersCopy.pop();
+                            setDisplayUsers(DisplayUsersCopy);
+                            addUserRef.current.value = null;
+                        } else {
+                            setMessage(null);
+                            setSuccess(null);
+                            setError("User already displayed");
+                            setTimeout(() => {
+                                setError(null);
+                            }, 2000);
+                        }
                     } else {
                         setMessage(null);
                         setSuccess(null);
-                        setError("Error");
+                        setError("User does not exist");
                         setTimeout(() => {
                             setError(null);
                         }, 2000);
@@ -118,7 +118,7 @@ export default function Users({
 
             <br />
 
-            {DisplayUsers ? DisplayUsers : <div>No Users</div>}
+            {DisplayUsers ? renderUsers() : <div>No Users</div>}
         </>
     );
 }

@@ -229,6 +229,7 @@ input:focus {
     display: flex;
     justify-content: center;
     top: 20px;
+    animation: toast-in 0.25s linear;
 }
 
 .Toast > div {
@@ -241,6 +242,17 @@ input:focus {
     font-family: "CircularStd-Bold";
     font-size: 1.5rem;
     border-radius: 100px;
+}
+
+@keyframes toast-in {
+    0% {
+        opacity: 0;
+        top: 0px;
+    }
+    100% {
+        opacity: 1;
+        top: 20px;
+    }
 }
 
 .Message > div {
