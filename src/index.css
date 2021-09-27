@@ -1,0 +1,293 @@
+@font-face {
+    font-family: CircularStd-Black;
+    src: url(/src/Assets/Font/CircularStd-Black.otf);
+}
+@font-face {
+    font-family: CircularStd-Bold;
+    src: url(/src/Assets/Font/CircularStd-Bold.otf);
+}
+@font-face {
+    font-family: CircularStd-Book;
+    src: url(/src/Assets/Font/CircularStd-Book.otf);
+}
+@font-face {
+    font-family: CircularStd-Medium;
+    src: url(/src/Assets/Font/CircularStd-Medium.otf);
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+button {
+    text-align: center;
+    color: white;
+    background-color: #785dfb;
+    border: 1px solid #785dfb;
+    padding: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-family: "CircularStd-Bold";
+    font-size: 1rem;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #785dfb;
+    background-color: white;
+}
+
+input {
+    color: #352956;
+    background-color: #f7f6fa;
+    border: 0;
+    padding: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-family: "CircularStd-Book";
+    font-size: 1rem;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 260px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.Loading {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #785dfb;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: "CircularStd-Black";
+}
+
+.Loading > h2 {
+    position: relative;
+    font-size: 10vmax;
+    color: #785dfb;
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 0.01em white;
+    text-indent: 15px;
+}
+
+.Loading > h2::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+    animation: loading 3s linear infinite;
+    -webkit-text-stroke: 0.01em white;
+    border-right: 6px solid white;
+}
+
+@keyframes loading {
+    0%,
+    10%,
+    100% {
+        width: 0%;
+    }
+    70%,
+    80% {
+        width: 100%;
+    }
+}
+
+.Login {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: 1fr;
+    width: 100vw;
+    height: 100vh;
+    font-family: "CircularStd-Bold";
+}
+
+.LoginLeft {
+    display: flex;
+}
+
+.Carousel {
+    width: 60vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    overflow: hidden;
+    position: relative;
+}
+
+.CarouselRow {
+    height: 25vh;
+    display: flex;
+    width: calc(25vh * 12);
+}
+
+.CarouselRow1,
+.CarouselRow3 {
+    animation: carousel-odd 20s linear infinite;
+}
+
+.CarouselRow2,
+.CarouselRow4 {
+    animation: carousel-even 20s linear infinite;
+}
+
+.CarouselRow > img {
+    height: 25vh;
+    width: 25vh;
+}
+
+@keyframes carousel-odd {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-25vh * 4));
+    }
+}
+
+@keyframes carousel-even {
+    0% {
+        transform: translateX(calc(-25vh * 4));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.LoginRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.LoginRight > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoginRight > form > label {
+    font-size: 1.2rem;
+    color: #352956;
+}
+
+.Logo {
+    font-family: "CircularStd-Black";
+    font-size: 4em;
+    color: #785dfb;
+}
+
+.Login .Logo {
+    margin-bottom: 1rem;
+}
+
+.SignupLoginHere {
+    padding-bottom: 0.1em;
+    border-bottom: 0.1em solid;
+    cursor: pointer;
+    color: #352956;
+}
+
+.SignupLoginHere:hover {
+    color: #785dfb;
+}
+
+.HaveAnAccount {
+    color: #9a95aa;
+}
+
+.Toast {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 20px;
+}
+
+.Toast > div {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    min-width: 30vw;
+    font-family: "CircularStd-Bold";
+    font-size: 1.5rem;
+    border-radius: 100px;
+}
+
+.Message > div {
+    background-color: #0060ff;
+}
+
+.Success > div {
+    background-color: #00cc7d;
+}
+
+.Error > div {
+    background-color: #ea4435;
+}
+
+@media (orientation: portrait) {
+    .LoginLeft {
+        display: none;
+    }
+
+    .Login {
+        grid-template-columns: 1fr;
+    }
+
+    .Toast > div {
+        min-width: 50vw;
+    }
+
+    .LoginRight {
+        padding-top: 15vh;
+        padding-bottom: 17.5vh;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+    .LoginLeft {
+        display: flex;
+    }
+
+    .Login {
+        grid-template-columns: 4fr 6fr;
+    }
+
+    .Carousel {
+        width: 40vw;
+    }
+
+    .LoginRight {
+        padding-bottom: 30vh;
+    }
+}
