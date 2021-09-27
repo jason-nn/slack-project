@@ -1,4 +1,5 @@
-1. Design desktop
-2. Search for invite user | add user to chat
+1. Reusable image generator
+2. Design desktop
 3. Design mobile
-4. Error validation (optional)
+4. Search for invite user | add user to chat
+5. Error validation (optional)

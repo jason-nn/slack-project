@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { icons, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function Channel({
     data,
@@ -55,6 +56,12 @@ export default function Channel({
                         });
                 }}
             >
+                <div>
+                    <img
+                        src={icons[calculateIndex(data.id, "Channel")]}
+                        alt="icon"
+                    />
+                </div>
                 <div>{data.name}</div>
                 <div>
                     <i>{LastMessage ? LastMessage : "No previous messages"}</i>

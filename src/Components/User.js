@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function User({
     data,
@@ -55,6 +56,12 @@ export default function User({
                         });
                 }}
             >
+                <div>
+                    <img
+                        src={avatars[calculateIndex(data.id, "User")]}
+                        alt="avatar"
+                    />
+                </div>
                 <div>{data.uid}</div>
                 <div>
                     <i>{LastMessage ? LastMessage : "No previous messages"}</i>

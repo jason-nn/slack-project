@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import ChannelMember from "./ChannelMember";
+import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function ChatInfo({
     UserHeaders,
@@ -14,24 +15,6 @@ export default function ChatInfo({
 }) {
     // console.log(AllUsers);
     // console.log(DisplayChatID);
-    const icons = ["Icon_1.png", "Icon_2.png", "Icon_3.png"];
-    const avatars = [
-        "Avatar_1.png",
-        "Avatar_2.png",
-        "Avatar_3.png",
-        "Avatar_4.png",
-        "Avatar_5.png",
-        "Avatar_6.png",
-        "Avatar_7.png",
-        "Avatar_8.png",
-    ];
-
-    function calculateIndex(ID) {
-        let dividend;
-        if (DisplayChatClass === "Channel") dividend = 3;
-        if (DisplayChatClass === "User") dividend = 8;
-        return ID % dividend;
-    }
 
     const [ChannelMembers, setChannelMembers] = useState(null);
 
@@ -85,10 +68,19 @@ export default function ChatInfo({
                     <div>
                         <img
                             src={
-                                "Images/" +
-                                (DisplayChatClass === "Channel"
-                                    ? icons[calculateIndex(DisplayChatID)]
-                                    : avatars[calculateIndex(DisplayChatID)])
+                                DisplayChatClass === "Channel"
+                                    ? icons[
+                                          calculateIndex(
+                                              DisplayChatID,
+                                              DisplayChatClass
+                                          )
+                                      ]
+                                    : avatars[
+                                          calculateIndex(
+                                              DisplayChatID,
+                                              DisplayChatClass
+                                          )
+                                      ]
                             }
                             alt="icon/avatar"
                         />
