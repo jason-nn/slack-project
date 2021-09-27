@@ -12,7 +12,9 @@ export default function Users({
     setDisplayChatID,
     setDisplayChatClass,
     DisplayChat,
+    UserData,
 }) {
+    // console.log(UserData);
     const [Users, setUsers] = useState(null);
     const [DisplayUsers, setDisplayUsers] = useState(null);
     const addUserRef = useRef(null);
@@ -86,6 +88,16 @@ export default function Users({
                         const ids = DisplayUsers.map((User) => User.id);
                         const index2 = ids.findIndex((id) => id === newUser.id);
                         // console.log(index2);
+
+                        if (newUser.id === UserData.id) {
+                            setMessage(null);
+                            setSuccess(null);
+                            setError("Cannot add yourself");
+                            setTimeout(() => {
+                                setError(null);
+                            }, 2000);
+                            return;
+                        }
 
                         if (index2 === -1) {
                             const DisplayUsersCopy = [...DisplayUsers];
