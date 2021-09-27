@@ -85,9 +85,17 @@ export default function Users({
                         DisplayUsersCopy.unshift(
                             <User
                                 UserHeaders={UserHeaders}
+                                DisplayChat={DisplayChat}
                                 key={newUser.id}
                                 data={newUser}
                                 setDisplayChat={(i) => setDisplayChat(i)}
+                                setDisplayChatName={(i) =>
+                                    setDisplayChatName(i)
+                                }
+                                setDisplayChatID={(i) => setDisplayChatID(i)}
+                                setDisplayChatClass={(i) =>
+                                    setDisplayChatClass(i)
+                                }
                             />
                         );
                         DisplayUsersCopy.pop();
