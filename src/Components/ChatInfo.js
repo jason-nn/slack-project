@@ -92,7 +92,7 @@ export default function ChatInfo({
 
                 {DisplayChatName ? (
                     <>
-                        <div className="title">{DisplayChatName}</div>
+                        <div className="ChatName">{DisplayChatName}</div>
                     </>
                 ) : null}
             </div>

@@ -395,6 +395,150 @@ input:focus {
     overflow: scroll;
 }
 
+.ChatHeader {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-bottom: 3px solid #f3f1f6;
+    position: fixed;
+    background-color: white;
+    width: 54vw;
+    z-index: 1;
+}
+
+.ChatMessages {
+    padding-top: 60px;
+    padding-bottom: 80px;
+    position: relative;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+/* INBOUND */
+.ChatMessageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ChatMessage {
+    max-width: 60%;
+    min-width: auto;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 40px;
+    position: relative;
+}
+
+.ChatMessageSender {
+    color: #9a95aa;
+    padding-top: 5px;
+}
+
+.ChatMessageImage {
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+}
+
+.ChatMessageBodyContainer {
+    width: 100%;
+}
+
+.ChatMessageBody {
+    background-color: #f7f6fa;
+    color: #352956;
+    max-width: 100%;
+    min-width: auto;
+    display: inline-block;
+    word-wrap: break-word;
+    border-radius: 10px 10px 10px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* INBOUND */
+
+/* OUTBOUND */
+.ChatMessageContainerOutbound {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ChatMessageOutbound {
+    max-width: 60%;
+    min-width: auto;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-right: 40px;
+    position: relative;
+}
+
+.ChatMessageSenderOutbound {
+    color: #9a95aa;
+    padding-top: 5px;
+    text-align: right;
+}
+
+.ChatMessageImageOutbound {
+    position: absolute;
+    bottom: 25px;
+    right: 5px;
+}
+
+.ChatMessageBodyContainerOutbound {
+    width: 100%;
+    display: flex;
+}
+
+.ChatMessageBodyOutbound {
+    background-color: #785dfb;
+    color: white;
+    max-width: 100%;
+    min-width: auto;
+    display: inline-block;
+    word-wrap: break-word;
+    border-radius: 10px 10px 0px 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: auto;
+    margin-right: 0;
+}
+/* OUTBOUND */
+
+.ChatMessagesContainer {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.ChatInput {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: 3px solid #f3f1f6;
+    background-color: white;
+    width: 54vw;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+.ChatInput form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ChatInput input {
+    width: 40vw;
+}
+
 .HomeRightPanel {
     overflow: scroll;
     border-left: 3px solid #f3f1f6;
@@ -422,9 +566,9 @@ input:focus {
     width: 120px;
 }
 
-.title {
+.ChatName {
     font-size: 1.4em;
-    font-family: CircularStd-Bold;
+    font-family: CircularStd-Medium;
     padding-top: 10px;
     padding-bottom: 10px;
 }
