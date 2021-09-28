@@ -82,9 +82,14 @@ export default function Users({
             {DisplayModal ? (
                 <div className="modal">
                     <div>
-                        <button onClick={() => setDisplayModal(false)}>
+                        <button
+                            onClick={() => setDisplayModal(false)}
+                            className="closeModal"
+                        >
                             Close
                         </button>
+
+                        <div className="ChatName">Add a new user</div>
 
                         <form
                             onSubmit={(e) => {
@@ -157,6 +162,8 @@ export default function Users({
                             />
                             <button>Add</button>
                         </form>
+
+                        <div className="searchResults"></div>
                     </div>
                 </div>
             ) : null}

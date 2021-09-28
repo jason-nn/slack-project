@@ -75,9 +75,14 @@ export default function Channels({
             {DisplayModal ? (
                 <div className="modal">
                     <div>
-                        <button onClick={() => setDisplayModal(false)}>
+                        <button
+                            onClick={() => setDisplayModal(false)}
+                            className="closeModal"
+                        >
                             Close
                         </button>
+
+                        <div className="ChatName">Create a new channel</div>
 
                         <form
                             onSubmit={(e) => {

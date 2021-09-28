@@ -389,6 +389,63 @@ input:focus {
 
 .modal > div {
     background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Channels .modal > div {
+    padding-bottom: 70px;
+}
+
+.modal input {
+    border-radius: 1000px 0px 0px 1000px;
+    border: 1px solid #f7f6fa;
+    padding-right: 1em;
+}
+
+.modal button {
+    border-radius: 0px 1000px 1000px 0px;
+    padding-left: 1em;
+}
+
+.modal .ChatName {
+    margin-bottom: 20px;
+}
+
+.closeModal {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    background-color: white;
+    border: 1px solid #785dfb;
+    border-left: none;
+    color: #785dfb;
+}
+
+.closeModal:hover {
+    color: white;
+    background-color: #785dfb;
+}
+
+.searchResults {
+    width: 340px;
+    height: 300px;
+    background-color: #f7f6fa;
+    color: #352956;
+    border-radius: 20px;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    overflow: scroll;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .HomeMiddlePanel {

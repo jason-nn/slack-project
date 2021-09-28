@@ -101,9 +101,16 @@ export default function ChatInfo({
                     {DisplayModal ? (
                         <div className="modal">
                             <div>
-                                <button onClick={() => setDisplayModal(false)}>
+                                <button
+                                    onClick={() => setDisplayModal(false)}
+                                    className="closeModal"
+                                >
                                     Close
                                 </button>
+
+                                <div className="ChatName">
+                                    Invite a user to {DisplayChatName}
+                                </div>
 
                                 <form
                                     onSubmit={(e) => {
@@ -254,6 +261,8 @@ export default function ChatInfo({
                                     />
                                     <button>Invite</button>
                                 </form>
+
+                                <div className="searchResults"></div>
                             </div>
                         </div>
                     ) : null}
