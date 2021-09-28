@@ -1,5 +1,5 @@
-1. Add auto scroll
-2. Check if new channel was created, set success and error
+1. Check if new channel was created, set success and error
+2. Add auto scroll
 3. Design mobile
 4. Search for invite user | add user to chat
 5. Error validation (optional)
