@@ -6,7 +6,7 @@ export default function Logout({
     setDisplayLoading,
 }) {
     return (
-        <>
+        <div className="Logout">
             <button
                 onClick={() => {
                     setUserData(null);
@@ -19,6 +19,6 @@ export default function Logout({
             >
                 Log out
             </button>
-        </>
+        </div>
     );
 }

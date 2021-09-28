@@ -10,15 +10,17 @@ export default function ChannelMember({ data, AllUsers }) {
     }
 
     return (
-        <>
+        <div className="ChannelMember">
             <div>
                 <img
+                    className="ChannelMemberImage"
                     src={avatars[calculateIndex(data["user_id"], "User")]}
                     alt="avatar"
                 />
             </div>
-            <div>{convertToEmail(data["user_id"])}</div>
-            <br />
-        </>
+            <div className="ChannelMemberName">
+                {convertToEmail(data["user_id"])}
+            </div>
+        </div>
     );
 }

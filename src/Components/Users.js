@@ -18,6 +18,7 @@ export default function Users({
     const [Users, setUsers] = useState(null);
     const [DisplayUsers, setDisplayUsers] = useState(null);
     const addUserRef = useRef(null);
+    const [DisplayModal, setDisplayModal] = useState(false);
 
     useEffect(() => {
         let config = {
@@ -68,70 +69,97 @@ export default function Users({
 
     return (
         <>
-            <div>
-                <b>Users</b>
-            </div>
+            <div className="header">Users</div>
 
-            <br />
-
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-
-                    const addUser = addUserRef.current.value;
-                    const uids = Users.map((User) => User.uid);
-                    const index = uids.findIndex((uid) => uid === addUser);
-
-                    if (index > -1) {
-                        const newUser = Users[index];
-
-                        const ids = DisplayUsers.map((User) => User.id);
-                        const index2 = ids.findIndex((id) => id === newUser.id);
-                        // console.log(index2);
-
-                        if (newUser.id === UserData.id) {
-                            setMessage(null);
-                            setSuccess(null);
-                            setError("Cannot add yourself");
-                            setTimeout(() => {
-                                setError(null);
-                            }, 2000);
-                            return;
-                        }
-
-                        if (index2 === -1) {
-                            const DisplayUsersCopy = [...DisplayUsers];
-                            DisplayUsersCopy.unshift(newUser);
-                            DisplayUsersCopy.pop();
-                            setDisplayUsers(DisplayUsersCopy);
-                            addUserRef.current.value = null;
-                        } else {
-                            setMessage(null);
-                            setSuccess(null);
-                            setError("User already displayed");
-                            setTimeout(() => {
-                                setError(null);
-                            }, 2000);
-                        }
-                    } else {
-                        setMessage(null);
-                        setSuccess(null);
-                        setError("User does not exist");
-                        setTimeout(() => {
-                            setError(null);
-                        }, 2000);
-                    }
+            <button
+                onClick={() => {
+                    setDisplayModal(true);
                 }}
             >
-                <input
-                    type="text"
-                    ref={addUserRef}
-                    placeholder="jason@bubble.com"
-                />
-                <button>Add</button>
-            </form>
+                Add
+            </button>
 
-            <br />
+            {DisplayModal ? (
+                <div className="modal">
+                    <div>
+                        <button onClick={() => setDisplayModal(false)}>
+                            Close
+                        </button>
+
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+
+                                const addUser = addUserRef.current.value;
+                                const uids = Users.map((User) => User.uid);
+                                const index = uids.findIndex(
+                                    (uid) => uid === addUser
+                                );
+
+                                if (index > -1) {
+                                    const newUser = Users[index];
+
+                                    const ids = DisplayUsers.map(
+                                        (User) => User.id
+                                    );
+                                    const index2 = ids.findIndex(
+                                        (id) => id === newUser.id
+                                    );
+                                    // console.log(index2);
+
+                                    if (newUser.id === UserData.id) {
+                                        setMessage(null);
+                                        setSuccess(null);
+                                        setError("Cannot add yourself");
+                                        setTimeout(() => {
+                                            setError(null);
+                                        }, 2000);
+                                        return;
+                                    }
+
+                                    if (index2 === -1) {
+                                        setDisplayModal(false);
+                                        const DisplayUsersCopy = [
+                                            ...DisplayUsers,
+                                        ];
+                                        DisplayUsersCopy.unshift(newUser);
+                                        DisplayUsersCopy.pop();
+                                        setDisplayUsers(DisplayUsersCopy);
+                                        addUserRef.current.value = null;
+                                        setMessage(null);
+                                        setSuccess("Added " + newUser.uid);
+                                        setError(null);
+                                        setTimeout(() => {
+                                            setSuccess(null);
+                                        }, 2000);
+                                    } else {
+                                        setMessage(null);
+                                        setSuccess(null);
+                                        setError("User already displayed");
+                                        setTimeout(() => {
+                                            setError(null);
+                                        }, 2000);
+                                    }
+                                } else {
+                                    setMessage(null);
+                                    setSuccess(null);
+                                    setError("User does not exist");
+                                    setTimeout(() => {
+                                        setError(null);
+                                    }, 2000);
+                                }
+                            }}
+                        >
+                            <input
+                                type="text"
+                                ref={addUserRef}
+                                placeholder="jason@bubble.com"
+                            />
+                            <button>Add</button>
+                        </form>
+                    </div>
+                </div>
+            ) : null}
 
             {DisplayUsers ? renderUsers() : <div>No Users</div>}
         </>

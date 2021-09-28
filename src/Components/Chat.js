@@ -29,16 +29,12 @@ export default function Chat({
 
     return (
         <>
-            <div>
-                <b>{DisplayChatName ? DisplayChatName : "No chat selected"}</b>
-            </div>
+            <div>{DisplayChatName ? DisplayChatName : "No chat selected"}</div>
             {/* <div>
                 <i>
                     {DisplayChatClass ? DisplayChatClass : "No chat selected"}
                 </i>
             </div> */}
-
-            <br />
 
             {DisplayChat.length > 0 ? (
                 renderChat()
@@ -51,8 +47,6 @@ export default function Chat({
                     </div>
                 </>
             )}
-
-            <br />
 
             <form
                 onSubmit={(e) => {

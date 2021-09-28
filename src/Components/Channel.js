@@ -40,6 +40,7 @@ export default function Channel({
     return (
         <>
             <div
+                className="Channel"
                 onClick={() => {
                     // console.log(data.id);
 
@@ -58,16 +59,16 @@ export default function Channel({
             >
                 <div>
                     <img
+                        className="ChannelImage"
                         src={icons[calculateIndex(data.id, "Channel")]}
                         alt="icon"
                     />
                 </div>
-                <div>{data.name}</div>
-                <div>
-                    <i>{LastMessage ? LastMessage : "No previous messages"}</i>
+                <div className="ChannelName">{data.name}</div>
+                <div className="ChannelLastMessage">
+                    {LastMessage ? LastMessage : "No previous messages"}
                 </div>
             </div>
-            <br />
         </>
     );
 }

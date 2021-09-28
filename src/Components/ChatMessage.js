@@ -11,10 +11,7 @@ export default function ChatMessage({ data }) {
                 />
             </div>
             <div>{data.body}</div>
-            <div>
-                <i>{data.sender.uid}</i>
-            </div>
-            <br />
+            <div>{data.sender.uid}</div>
         </>
     );
 }

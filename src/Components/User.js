@@ -40,6 +40,7 @@ export default function User({
     return (
         <>
             <div
+                className="Channel"
                 onClick={() => {
                     // console.log(data.id);
 
@@ -58,16 +59,16 @@ export default function User({
             >
                 <div>
                     <img
+                        className="ChannelImage"
                         src={avatars[calculateIndex(data.id, "User")]}
                         alt="avatar"
                     />
                 </div>
-                <div>{data.uid}</div>
-                <div>
-                    <i>{LastMessage ? LastMessage : "No previous messages"}</i>
+                <div className="ChannelName">{data.uid}</div>
+                <div className="ChannelLastMessage">
+                    {LastMessage ? LastMessage : "No previous messages"}
                 </div>
             </div>
-            <br />
         </>
     );
 }

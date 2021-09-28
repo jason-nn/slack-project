@@ -59,16 +59,10 @@ export default function Channels({
     }
 
     return (
-        <>
-            <div>
-                <b>Channels</b>
-            </div>
-
-            <br />
+        <div className="Channels">
+            <div className="header">Channels</div>
 
             {Channels ? renderChannels() : <div>No channels</div>}
-
-            <br />
 
             <button
                 onClick={() => {
@@ -79,103 +73,100 @@ export default function Channels({
             </button>
 
             {DisplayModal ? (
-                <>
-                    <br />
-                    <br />
+                <div className="modal">
+                    <div>
+                        <button onClick={() => setDisplayModal(false)}>
+                            Close
+                        </button>
 
-                    <button onClick={() => setDisplayModal(false)}>
-                        Close
-                    </button>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
 
-                    <br />
-                    <br />
+                                let data = {
+                                    name: newChannelRef.current.value,
+                                    user_ids: "[]",
+                                };
+                                let config = {
+                                    method: "post",
+                                    url: "channels",
+                                    headers: {
+                                        "access-token":
+                                            UserHeaders["access-token"],
+                                        client: UserHeaders.client,
+                                        expiry: UserHeaders.expiry,
+                                        uid: UserHeaders.uid,
+                                    },
+                                    data: data,
+                                };
 
-                    <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
+                                axios(config)
+                                    .then((response) => {
+                                        // console.log("response", response);
+                                        setDisplayModal(false);
 
-                            let data = {
-                                name: newChannelRef.current.value,
-                                user_ids: "[]",
-                            };
-                            let config = {
-                                method: "post",
-                                url: "channels",
-                                headers: {
-                                    "access-token": UserHeaders["access-token"],
-                                    client: UserHeaders.client,
-                                    expiry: UserHeaders.expiry,
-                                    uid: UserHeaders.uid,
-                                },
-                                data: data,
-                            };
+                                        let config = {
+                                            method: "get",
+                                            url: "channels",
+                                            headers: {
+                                                "access-token":
+                                                    UserHeaders["access-token"],
+                                                client: UserHeaders.client,
+                                                expiry: UserHeaders.expiry,
+                                                uid: UserHeaders.uid,
+                                            },
+                                        };
 
-                            axios(config)
-                                .then((response) => {
-                                    // console.log("response", response);
-                                    setDisplayModal(false);
+                                        axios(config)
+                                            .then((response) => {
+                                                // console.log("response", response);
+                                                setChannels(
+                                                    response?.data?.data
+                                                );
+                                            })
+                                            .catch((error) => {
+                                                console.log(error);
+                                            });
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                        setDisplayModal(false);
 
-                                    let config = {
-                                        method: "get",
-                                        url: "channels",
-                                        headers: {
-                                            "access-token":
-                                                UserHeaders["access-token"],
-                                            client: UserHeaders.client,
-                                            expiry: UserHeaders.expiry,
-                                            uid: UserHeaders.uid,
-                                        },
-                                    };
+                                        let config = {
+                                            method: "get",
+                                            url: "channels",
+                                            headers: {
+                                                "access-token":
+                                                    UserHeaders["access-token"],
+                                                client: UserHeaders.client,
+                                                expiry: UserHeaders.expiry,
+                                                uid: UserHeaders.uid,
+                                            },
+                                        };
 
-                                    axios(config)
-                                        .then((response) => {
-                                            // console.log("response", response);
-                                            setChannels(response?.data?.data);
-                                        })
-                                        .catch((error) => {
-                                            console.log(error);
-                                        });
-                                })
-                                .catch((error) => {
-                                    console.log(error);
-                                    setDisplayModal(false);
-
-                                    let config = {
-                                        method: "get",
-                                        url: "channels",
-                                        headers: {
-                                            "access-token":
-                                                UserHeaders["access-token"],
-                                            client: UserHeaders.client,
-                                            expiry: UserHeaders.expiry,
-                                            uid: UserHeaders.uid,
-                                        },
-                                    };
-
-                                    axios(config)
-                                        .then((response) => {
-                                            // console.log("response", response);
-                                            setChannels(response?.data?.data);
-                                        })
-                                        .catch((error) => {
-                                            console.log(error);
-                                        });
-                                });
-                        }}
-                    >
-                        <input
-                            type="text"
-                            ref={newChannelRef}
-                            placeholder="Channel name"
-                        />
-                        <button>Create</button>
-                    </form>
-                </>
-            ) : (
-                <>
-                    <br />
-                </>
-            )}
-        </>
+                                        axios(config)
+                                            .then((response) => {
+                                                // console.log("response", response);
+                                                setChannels(
+                                                    response?.data?.data
+                                                );
+                                            })
+                                            .catch((error) => {
+                                                console.log(error);
+                                            });
+                                    });
+                            }}
+                        >
+                            <input
+                                type="text"
+                                ref={newChannelRef}
+                                placeholder="New channel name"
+                            />
+                            <button>Create</button>
+                        </form>
+                    </div>
+                </div>
+            ) : null}
+        </div>
     );
 }
