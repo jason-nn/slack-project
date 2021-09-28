@@ -42,11 +42,8 @@ export default function User({
             <div
                 className="Channel"
                 onClick={() => {
-                    // console.log(data.id);
-
                     axios(config)
                         .then((response) => {
-                            // console.log("response", response);
                             setDisplayChat(response?.data?.data);
                             setDisplayChatName(data.uid);
                             setDisplayChatID(data.id);

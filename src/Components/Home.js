@@ -22,6 +22,7 @@ export default function Home({
     const [DisplayChatID, setDisplayChatID] = useState(null);
     const [DisplayChatClass, setDisplayChatClass] = useState(null);
     const [AllUsers, setAllUsers] = useState(null);
+    const [ChannelMembers, setChannelMembers] = useState(null);
 
     useEffect(() => {
         let config = {
@@ -37,7 +38,6 @@ export default function Home({
 
         axios(config)
             .then((response) => {
-                // console.log("response", response);
                 setAllUsers(response?.data?.data);
             })
             .catch((error) => {
@@ -61,6 +61,9 @@ export default function Home({
                         setDisplayChatID={(i) => setDisplayChatID(i)}
                         setDisplayChatClass={(i) => setDisplayChatClass(i)}
                         DisplayChat={DisplayChat}
+                        DisplayChatID={DisplayChatID}
+                        setChannelMembers={(i) => setChannelMembers(i)}
+                        ChannelMembers={ChannelMembers}
                     />
 
                     <Users
@@ -101,6 +104,8 @@ export default function Home({
                     setMessage={(i) => setMessage(i)}
                     setSuccess={(i) => setSuccess(i)}
                     setError={(i) => setError(i)}
+                    ChannelMembers={ChannelMembers}
+                    setChannelMembers={(i) => setChannelMembers(i)}
                 />
 
                 <Logout

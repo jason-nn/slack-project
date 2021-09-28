@@ -9,6 +9,10 @@ export default function Channels({
     setDisplayChatID,
     setDisplayChatClass,
     DisplayChat,
+    DisplayChatID,
+    setChannelMembers,
+    UserData,
+    ChannelMembers,
 }) {
     const [Channels, setChannels] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
@@ -29,7 +33,6 @@ export default function Channels({
 
         axios(config)
             .then((response) => {
-                // console.log("response", response);
                 setChannels(response?.data?.data);
             })
             .catch((error) => {
@@ -51,6 +54,10 @@ export default function Channels({
                     setDisplayChatID={(i) => setDisplayChatID(i)}
                     setDisplayChatClass={(i) => setDisplayChatClass(i)}
                     DisplayChat={DisplayChat}
+                    DisplayChatID={DisplayChatID}
+                    setChannelMembers={(i) => setChannelMembers(i)}
+                    UserData={UserData}
+                    ChannelMembers={ChannelMembers}
                 />
             );
         }
@@ -111,7 +118,6 @@ export default function Channels({
 
                                 axios(config)
                                     .then((response) => {
-                                        // console.log("response", response);
                                         setDisplayModal(false);
 
                                         let config = {
@@ -128,7 +134,6 @@ export default function Channels({
 
                                         axios(config)
                                             .then((response) => {
-                                                // console.log("response", response);
                                                 setChannels(
                                                     response?.data?.data
                                                 );
@@ -155,7 +160,6 @@ export default function Channels({
 
                                         axios(config)
                                             .then((response) => {
-                                                // console.log("response", response);
                                                 setChannels(
                                                     response?.data?.data
                                                 );

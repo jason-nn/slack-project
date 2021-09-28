@@ -11,9 +11,6 @@ export default function Chat({
     setDisplayChat,
     UserData,
 }) {
-    // console.log(DisplayChat);
-    // console.log(DisplayChatID);
-
     function renderChat() {
         const output = [];
 
@@ -109,7 +106,6 @@ export default function Chat({
 
                                 axios(config)
                                     .then((response) => {
-                                        // console.log("response", response);
                                         setDisplayChat(response?.data?.data);
                                     })
                                     .catch((error) => {

@@ -10,6 +10,8 @@ export default function Channel({
     setDisplayChatID,
     setDisplayChatClass,
     DisplayChat,
+    DisplayChatID,
+    setChannelMembers,
 }) {
     let config = {
         method: "get",
@@ -42,15 +44,34 @@ export default function Channel({
             <div
                 className="Channel"
                 onClick={() => {
-                    // console.log(data.id);
-
                     axios(config)
                         .then((response) => {
-                            // console.log("response", response);
                             setDisplayChat(response?.data?.data);
                             setDisplayChatName(data.name);
                             setDisplayChatID(data.id);
                             setDisplayChatClass("Channel");
+                            setChannelMembers(null);
+
+                            let config = {
+                                method: "get",
+                                url: "channels/" + data.id,
+                                headers: {
+                                    "access-token": UserHeaders["access-token"],
+                                    client: UserHeaders.client,
+                                    expiry: UserHeaders.expiry,
+                                    uid: UserHeaders.uid,
+                                },
+                            };
+
+                            axios(config)
+                                .then((response) => {
+                                    setChannelMembers(
+                                        response?.data?.data["channel_members"]
+                                    );
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
                         })
                         .catch((error) => {
                             console.log(error);

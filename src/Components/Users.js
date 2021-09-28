@@ -14,7 +14,6 @@ export default function Users({
     DisplayChat,
     UserData,
 }) {
-    // console.log(UserData);
     const [Users, setUsers] = useState(null);
     const [DisplayUsers, setDisplayUsers] = useState(null);
     const addUserRef = useRef(null);
@@ -34,7 +33,6 @@ export default function Users({
 
         axios(config)
             .then((response) => {
-                // console.log("response", response);
                 setUsers(response?.data?.data);
                 const output = [];
                 for (let i = 0; i < 10; i++) {
@@ -110,7 +108,6 @@ export default function Users({
                                     const index2 = ids.findIndex(
                                         (id) => id === newUser.id
                                     );
-                                    // console.log(index2);
 
                                     if (newUser.id === UserData.id) {
                                         setMessage(null);

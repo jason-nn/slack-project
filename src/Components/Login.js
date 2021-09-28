@@ -61,7 +61,6 @@ export default function Login({
 
                         axios(config)
                             .then((response) => {
-                                // console.log("response", response);
                                 if (Login) {
                                     emailRef.current.value = null;
                                     passwordRef.current.value = null;

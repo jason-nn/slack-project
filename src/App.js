@@ -16,13 +16,6 @@ export default function App() {
     const [Success, setSuccess] = useState(null);
     const [Error, setError] = useState(null);
 
-    // useEffect(() => {
-    //     console.log("UserData", UserData);
-    // }, [UserData]);
-    // useEffect(() => {
-    //     console.log("UserHeaders", UserHeaders);
-    // }, [UserHeaders]);
-
     setTimeout(() => {
         setDisplayLoading(false);
     }, 3300);

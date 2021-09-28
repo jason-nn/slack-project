@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import ChannelMember from "./ChannelMember";
 import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
@@ -14,37 +14,10 @@ export default function ChatInfo({
     setMessage,
     setSuccess,
     setError,
+    ChannelMembers,
+    setChannelMembers,
 }) {
-    // console.log(AllUsers);
-    // console.log(DisplayChatID);
-
-    const [ChannelMembers, setChannelMembers] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
-
-    useEffect(() => {
-        let config = {
-            method: "get",
-            url: "channels/" + DisplayChatID,
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        if (DisplayChatClass === "Channel") {
-            axios(config)
-                .then((response) => {
-                    // console.log("response", response);
-                    setChannelMembers(response?.data?.data["channel_members"]);
-                    // console.log("ChannelMembers", ChannelMembers);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
-    }, [DisplayChatID]);
 
     function renderChannelMembers() {
         const output = [];
@@ -164,7 +137,6 @@ export default function ChatInfo({
 
                                                 axios(config)
                                                     .then((response) => {
-                                                        // console.log("response", response);
                                                         let config = {
                                                             method: "get",
                                                             url:
@@ -181,57 +153,46 @@ export default function ChatInfo({
                                                             },
                                                         };
 
-                                                        if (
-                                                            DisplayChatClass ===
-                                                            "Channel"
-                                                        ) {
-                                                            axios(config)
-                                                                .then(
-                                                                    (
+                                                        axios(config)
+                                                            .then(
+                                                                (response) => {
+                                                                    setChannelMembers(
                                                                         response
-                                                                    ) => {
-                                                                        // console.log("response", response);
-                                                                        setChannelMembers(
-                                                                            response
-                                                                                ?.data
-                                                                                ?.data[
-                                                                                "channel_members"
-                                                                            ]
-                                                                        );
-                                                                        setMessage(
-                                                                            null
-                                                                        );
-                                                                        setSuccess(
-                                                                            "Invited " +
-                                                                                newUser.uid +
-                                                                                " to " +
-                                                                                DisplayChatName
-                                                                        );
-                                                                        setError(
-                                                                            null
-                                                                        );
-                                                                        setTimeout(
-                                                                            () => {
-                                                                                setSuccess(
-                                                                                    null
-                                                                                );
-                                                                            },
-                                                                            2000
-                                                                        );
-                                                                        setDisplayModal(
-                                                                            false
-                                                                        );
-                                                                        // console.log("ChannelMembers", ChannelMembers);
-                                                                    }
-                                                                )
-                                                                .catch(
-                                                                    (error) => {
-                                                                        console.log(
-                                                                            error
-                                                                        );
-                                                                    }
+                                                                            ?.data
+                                                                            ?.data[
+                                                                            "channel_members"
+                                                                        ]
+                                                                    );
+                                                                    setMessage(
+                                                                        null
+                                                                    );
+                                                                    setSuccess(
+                                                                        "Invited " +
+                                                                            newUser.uid +
+                                                                            " to " +
+                                                                            DisplayChatName
+                                                                    );
+                                                                    setError(
+                                                                        null
+                                                                    );
+                                                                    setTimeout(
+                                                                        () => {
+                                                                            setSuccess(
+                                                                                null
+                                                                            );
+                                                                        },
+                                                                        2000
+                                                                    );
+                                                                    setDisplayModal(
+                                                                        false
+                                                                    );
+                                                                }
+                                                            )
+                                                            .catch((error) => {
+                                                                console.log(
+                                                                    error
                                                                 );
-                                                        }
+                                                            });
                                                     })
                                                     .catch((error) => {
                                                         console.log(error);
