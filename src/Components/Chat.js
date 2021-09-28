@@ -51,10 +51,12 @@ export default function Chat({
                         renderChat()
                     ) : (
                         <>
-                            <div>
-                                {DisplayChatName
-                                    ? "No chat history"
-                                    : "No chat selected"}
+                            <div className="emptyChat">
+                                <div>
+                                    {DisplayChatName
+                                        ? "No previous messages"
+                                        : "No chat selected"}
+                                </div>
                             </div>
                         </>
                     )}

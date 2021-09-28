@@ -1,8 +1,7 @@
-1. Design middle panel
-2. Make all black text purple
-3. Bug - channel members not loading on initial click
-4. Design modals
-5. Design empty fields
-6. Design mobile
-7. Search for invite user | add user to chat
-8. Error validation (optional)
+1. Add auto scroll
+2. Bug - channel members not loading on initial click
+3. Design modals
+4. Design empty fields
+5. Design mobile
+6. Search for invite user | add user to chat
+7. Error validation (optional)

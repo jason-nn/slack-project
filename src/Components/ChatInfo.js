@@ -64,38 +64,35 @@ export default function ChatInfo({
 
     return (
         <div className="ChatInfo">
-            <div className="fixed">
-                {DisplayChatClass ? (
-                    <>
-                        <div>
-                            <img
-                                src={
-                                    DisplayChatClass === "Channel"
-                                        ? icons[
-                                              calculateIndex(
-                                                  DisplayChatID,
-                                                  DisplayChatClass
-                                              )
-                                          ]
-                                        : avatars[
-                                              calculateIndex(
-                                                  DisplayChatID,
-                                                  DisplayChatClass
-                                              )
-                                          ]
-                                }
-                                alt="icon/avatar"
-                            />
-                        </div>
-                    </>
-                ) : null}
-
-                {DisplayChatName ? (
-                    <>
-                        <div className="ChatName">{DisplayChatName}</div>
-                    </>
-                ) : null}
-            </div>
+            {DisplayChatClass ? (
+                <div className="fixed">
+                    <div>
+                        <img
+                            src={
+                                DisplayChatClass === "Channel"
+                                    ? icons[
+                                          calculateIndex(
+                                              DisplayChatID,
+                                              DisplayChatClass
+                                          )
+                                      ]
+                                    : avatars[
+                                          calculateIndex(
+                                              DisplayChatID,
+                                              DisplayChatClass
+                                          )
+                                      ]
+                            }
+                            alt="icon/avatar"
+                        />
+                    </div>
+                    {DisplayChatName ? (
+                        <>
+                            <div className="ChatName">{DisplayChatName}</div>
+                        </>
+                    ) : null}
+                </div>
+            ) : null}
 
             {DisplayChatClass === "Channel" ? (
                 <div className="ChannelInfo">
