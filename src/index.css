@@ -172,6 +172,10 @@ input:focus {
     width: 25vh;
 }
 
+.Carousel2 {
+    padding-top: 191px;
+}
+
 @keyframes carousel-odd {
     0% {
         transform: translateX(0);
@@ -669,6 +673,25 @@ input:focus {
     padding-left: 1vw;
     padding-right: 1vw;
     z-index: 1;
+}
+
+.EmptyRightPanel {
+    width: 23vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.EmptyRightPanel img {
+    border-radius: 0;
+}
+
+.emptyChat {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #9a95aa;
 }
 
 @media (orientation: portrait) {

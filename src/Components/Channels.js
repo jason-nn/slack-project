@@ -62,7 +62,11 @@ export default function Channels({
         <div className="Channels">
             <div className="header">Channels</div>
 
-            {Channels ? renderChannels() : <div>No channels</div>}
+            {Channels ? (
+                renderChannels()
+            ) : (
+                <div className="header">No channels</div>
+            )}
 
             <button
                 onClick={() => {

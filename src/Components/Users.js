@@ -168,7 +168,11 @@ export default function Users({
                 </div>
             ) : null}
 
-            {DisplayUsers ? renderUsers() : <div>No Users</div>}
+            {DisplayUsers ? (
+                renderUsers()
+            ) : (
+                <div className="header">No Users</div>
+            )}
         </>
     );
 }

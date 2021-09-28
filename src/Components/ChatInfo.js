@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import ChannelMember from "./ChannelMember";
 import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import Carousel from "./Carousel";
+import Carousel2 from "./Carousel2";
 
 export default function ChatInfo({
     UserHeaders,
@@ -277,7 +279,20 @@ export default function ChatInfo({
                         Invite
                     </button>
                 </div>
-            ) : null}
+            ) : (
+                <>
+                    <div className="EmptyRightPanel">
+                        {DisplayChatClass === "User" ? (
+                            <Carousel2
+                                DisplayChatID={DisplayChatID}
+                                DisplayChatClass={DisplayChatClass}
+                            />
+                        ) : (
+                            <Carousel />
+                        )}
+                    </div>
+                </>
+            )}
         </div>
     );
 }
