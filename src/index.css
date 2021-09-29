@@ -862,10 +862,17 @@ input:focus {
         padding-right: 5vw;
         padding-top: 30px;
         padding-bottom: 20px;
+        overflow: hidden;
     }
 
     .ChatName {
         font-size: 2em;
+    }
+
+    .ChatInfo .ChatName {
+        max-width: 90%;
+        word-wrap: break-word;
+        text-align: center;
     }
 
     .ChannelInfo {
@@ -892,6 +899,7 @@ input:focus {
     }
 
     .Logout {
+        position: relative;
         width: 100vw;
         border-left: none;
         padding: 0.5em;
