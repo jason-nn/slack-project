@@ -6,7 +6,8 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 
 export default function App() {
-    axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
+    // axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
+    axios.defaults.baseURL = "https://slackapi.avionschool.com/api/v1";
 
     const [UserData, setUserData] = useState(null);
     const [UserHeaders, setUserHeaders] = useState(null);
