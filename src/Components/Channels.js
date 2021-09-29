@@ -13,6 +13,7 @@ export default function Channels({
     setMessage,
     setSuccess,
     setError,
+    setDisplayLeftPanel,
 }) {
     const [Channels, setChannels] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
@@ -55,6 +56,7 @@ export default function Channels({
                     setDisplayChatID={(i) => setDisplayChatID(i)}
                     setDisplayChatClass={(i) => setDisplayChatClass(i)}
                     setChannelMembers={(i) => setChannelMembers(i)}
+                    setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
                 />
             );
         }

@@ -24,6 +24,8 @@ export default function Home({
     const [AllUsers, setAllUsers] = useState(null);
     const [ChannelMembers, setChannelMembers] = useState(null);
     const [Fun, setFun] = useState(false);
+    const [DisplayLeftPanel, setDisplayLeftPanel] = useState(false);
+    const [DisplayRightPanel, setDisplayRightPanel] = useState(false);
 
     useEffect(() => {
         let config = {
@@ -48,7 +50,13 @@ export default function Home({
 
     return (
         <div className="Home">
-            <div className="HomeLeftPanel">
+            <div
+                className={
+                    DisplayLeftPanel
+                        ? "HomeLeftPanel ShowLeftPanel"
+                        : "HomeLeftPanel"
+                }
+            >
                 <div className="Fixed">
                     <Logo />
                 </div>
@@ -65,6 +73,7 @@ export default function Home({
                         setMessage={(i) => setMessage(i)}
                         setSuccess={(i) => setSuccess(i)}
                         setError={(i) => setError(i)}
+                        setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
                     />
 
                     <Users
@@ -79,6 +88,7 @@ export default function Home({
                         setMessage={(i) => setMessage(i)}
                         setSuccess={(i) => setSuccess(i)}
                         setError={(i) => setError(i)}
+                        setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
                     />
                 </div>
             </div>
@@ -95,7 +105,13 @@ export default function Home({
                 />
             </div>
 
-            <div className="HomeRightPanel">
+            <div
+                className={
+                    DisplayRightPanel
+                        ? "HomeRightPanel ShowRightPanel"
+                        : "HomeRightPanel"
+                }
+            >
                 <ChatInfo
                     UserHeaders={UserHeaders}
                     DisplayChatName={DisplayChatName}
@@ -118,6 +134,21 @@ export default function Home({
                     setFun={(i) => setFun(i)}
                 />
             </div>
+
+            <div
+                className={DisplayRightPanel ? "LeftToggle Hide" : "LeftToggle"}
+                onClick={() => {
+                    setDisplayLeftPanel(!DisplayLeftPanel);
+                }}
+            ></div>
+            <div
+                className={
+                    DisplayLeftPanel ? "RightToggle Hide" : "RightToggle"
+                }
+                onClick={() => {
+                    setDisplayRightPanel(!DisplayRightPanel);
+                }}
+            ></div>
         </div>
     );
 }

@@ -10,6 +10,7 @@ export default function User({
     setDisplayChatName,
     setDisplayChatID,
     setDisplayChatClass,
+    setDisplayLeftPanel,
 }) {
     let config = {
         method: "get",
@@ -48,6 +49,7 @@ export default function User({
                             setDisplayChatName(data.uid);
                             setDisplayChatID(data.id);
                             setDisplayChatClass("User");
+                            setDisplayLeftPanel(false);
                         })
                         .catch((error) => {
                             console.log(error);

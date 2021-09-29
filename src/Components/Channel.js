@@ -11,6 +11,7 @@ export default function Channel({
     setDisplayChatID,
     setDisplayChatClass,
     setChannelMembers,
+    setDisplayLeftPanel,
 }) {
     let config = {
         method: "get",
@@ -50,6 +51,7 @@ export default function Channel({
                             setDisplayChatID(data.id);
                             setDisplayChatClass("Channel");
                             setChannelMembers(null);
+                            setDisplayLeftPanel(false);
 
                             let config = {
                                 method: "get",

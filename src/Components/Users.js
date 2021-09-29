@@ -15,6 +15,7 @@ export default function Users({
     setMessage,
     setSuccess,
     setError,
+    setDisplayLeftPanel,
 }) {
     const [DisplayUsers, setDisplayUsers] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
@@ -60,6 +61,7 @@ export default function Users({
                     setDisplayChatName={(i) => setDisplayChatName(i)}
                     setDisplayChatID={(i) => setDisplayChatID(i)}
                     setDisplayChatClass={(i) => setDisplayChatClass(i)}
+                    setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
                 />
             );
         }
