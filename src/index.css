@@ -86,7 +86,7 @@ input:focus {
     background-color: #785dfb;
     height: 100vh;
     width: 100vw;
-    z-index: 3;
+    z-index: 5;
     top: 0;
     left: 0;
 }
@@ -237,7 +237,7 @@ input:focus {
 }
 
 .Toast {
-    z-index: 4;
+    z-index: 6;
     position: fixed;
     width: 100%;
     display: flex;
@@ -300,6 +300,7 @@ input:focus {
 .HomeLeftPanel {
     overflow: scroll;
     border-right: 3px solid #f3f1f6;
+    z-index: 2;
 }
 
 .HomeLeftPanel .Logo {
@@ -313,7 +314,7 @@ input:focus {
     padding-right: 1vw;
     border-bottom: 3px solid #f3f1f6;
     border-right: 3px solid #f3f1f6;
-    z-index: 1;
+    z-index: 3;
 }
 
 .HomeLeftPanel img {
@@ -380,7 +381,7 @@ input:focus {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 4;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -606,6 +607,7 @@ input:focus {
 .HomeRightPanel {
     overflow: scroll;
     border-left: 3px solid #f3f1f6;
+    z-index: 2;
 }
 
 .HomeRightPanel button {
@@ -619,7 +621,7 @@ input:focus {
     padding-left: 1vw;
     padding-right: 1vw;
     border-bottom: 3px solid #f3f1f6;
-    z-index: 1;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -673,7 +675,7 @@ input:focus {
     border-top: 3px solid #f3f1f6;
     padding-left: 1vw;
     padding-right: 1vw;
-    z-index: 1;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
 }
