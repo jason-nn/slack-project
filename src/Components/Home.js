@@ -144,7 +144,7 @@ export default function Home({
                 <div
                     className={DisplayLeftPanel ? "rotate45degrees" : null}
                 ></div>
-                <div className={DisplayLeftPanel ? "out" : null}></div>
+                <div className={DisplayLeftPanel ? "middle" : null}></div>
                 <div
                     className={DisplayLeftPanel ? "rotate-45degrees" : null}
                 ></div>
@@ -156,7 +156,27 @@ export default function Home({
                 onClick={() => {
                     setDisplayRightPanel(!DisplayRightPanel);
                 }}
-            ></div>
+            >
+                <div
+                    className={DisplayRightPanel ? "rotate45degrees" : "vanish"}
+                ></div>
+                <div
+                    className={
+                        DisplayRightPanel
+                            ? "rotate45degrees-vanish Dots"
+                            : "Dots"
+                    }
+                >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div
+                    className={
+                        DisplayRightPanel ? "rotate-45degrees" : "vanish"
+                    }
+                ></div>
+            </div>
         </div>
     );
 }

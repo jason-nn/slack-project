@@ -924,13 +924,13 @@ input:focus {
         width: 40px;
         height: 40px;
         position: fixed;
-        top: 15px;
-        left: 15px;
+        top: 10px;
+        left: 10px;
         z-index: 6;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        position: relative;
+        background-color: white;
     }
 
     .LeftToggle div {
@@ -944,25 +944,66 @@ input:focus {
 
     .rotate45degrees {
         transform: translateY(13px) rotate(45deg);
+        opacity: 1;
     }
 
-    .out {
+    .middle {
         transform: rotate(-45deg);
     }
 
     .rotate-45degrees {
         transform: translateY(-13px) rotate(-45deg);
+        opacity: 1;
     }
 
     .RightToggle {
         display: block;
         width: 40px;
         height: 40px;
-        background-color: turquoise;
+        background-color: white;
         position: fixed;
         top: 10px;
         right: 10px;
         z-index: 6;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .RightToggle > div:nth-child(odd) {
+        width: 40px;
+        height: 6px;
+        border-radius: 100vw;
+        background-color: #785dfb;
+        transition: all 0.3s linear;
+        position: relative;
+    }
+
+    .Dots {
+        background-color: none;
+        width: 40px;
+        height: 6px;
+        border-radius: 100vw;
+        transition: all 0.3s linear;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Dots div {
+        width: 10px;
+        height: 10px;
+        border-radius: 100vw;
+        background-color: #785dfb;
+    }
+
+    .vanish {
+        opacity: 0;
+    }
+
+    .rotate45degrees-vanish {
+        transform: rotate(45deg);
+        opacity: 0;
     }
 
     .Hide {
