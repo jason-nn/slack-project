@@ -51,7 +51,7 @@ input {
     font-size: 1rem;
     color: #352956;
     background-color: #f7f6fa;
-    border: 0;
+    border: 1px solid #f7f6fa;
     padding: 0.5em;
     padding-left: 2em;
     padding-right: 2em;
@@ -64,6 +64,7 @@ input {
 
 input:focus {
     outline: none;
+    border: 1px solid #785dfb;
 }
 
 .Fixed {
@@ -86,7 +87,7 @@ input:focus {
     background-color: #785dfb;
     height: 100vh;
     width: 100vw;
-    z-index: 5;
+    z-index: 7;
     top: 0;
     left: 0;
 }
@@ -237,7 +238,7 @@ input:focus {
 }
 
 .Toast {
-    z-index: 6;
+    z-index: 8;
     position: fixed;
     width: 100%;
     display: flex;
@@ -300,7 +301,7 @@ input:focus {
 .HomeLeftPanel {
     overflow: scroll;
     border-right: 3px solid #f3f1f6;
-    z-index: 2;
+    z-index: 4;
     background-color: white;
 }
 
@@ -315,7 +316,7 @@ input:focus {
     padding-right: 1vw;
     border-bottom: 3px solid #f3f1f6;
     border-right: 3px solid #f3f1f6;
-    z-index: 3;
+    z-index: 5;
 }
 
 .HomeLeftPanel img {
@@ -382,7 +383,7 @@ input:focus {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 4;
+    z-index: 6;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -407,17 +408,19 @@ input:focus {
 
 .Modal input {
     border-radius: 1000px 0px 0px 1000px;
-    border: 1px solid #f7f6fa;
     padding-right: 1em;
 }
 
 .Modal button {
     border-radius: 0px 1000px 1000px 0px;
     padding-left: 1em;
+    width: 100px;
 }
 
 .Modal .ChatName {
     margin-bottom: 20px;
+    text-align: center;
+    max-width: 360px;
 }
 
 .CloseModal {
@@ -437,7 +440,7 @@ input:focus {
 }
 
 .SearchResults {
-    width: 340px;
+    width: 360px;
     height: 300px;
     background-color: #f7f6fa;
     color: #352956;
@@ -597,12 +600,17 @@ input:focus {
 
 .ChatInput form {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
 .ChatInput input {
     width: 40vw;
+    border-radius: 100vw 0vw 0vw 100vw;
+}
+
+.ChatInput button {
+    border-radius: 0vw 100vw 100vw 0vw;
 }
 
 .HomeRightPanel {
@@ -725,429 +733,150 @@ input:focus {
         padding-bottom: 17.5vh;
     }
 
-    .Home {
-        width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: 2.3fr 5.4fr 2.3fr;
-        font-size: 1rem;
-        font-family: CircularStd-Book;
-        color: #352956;
+    .Header {
+        font-size: 1.6em;
     }
 
-    .Home img {
-        border-radius: 50%;
+    .Home {
+        display: block;
     }
 
     .HomeLeftPanel {
-        overflow: scroll;
-        border-right: 3px solid #f3f1f6;
-        z-index: 2;
-        background-color: white;
-    }
-
-    .HomeLeftPanel .Logo {
-        font-size: 3em;
+        /* display: none; */
+        border-right: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: -100vw;
     }
 
     .HomeLeftPanel .Fixed {
-        width: 23vw;
-        background-color: white;
-        padding-left: 1vw;
-        padding-right: 1vw;
-        border-bottom: 3px solid #f3f1f6;
-        border-right: 3px solid #f3f1f6;
-        z-index: 3;
-    }
-
-    .HomeLeftPanel img {
-        width: 50px;
+        width: 100vw;
+        padding: 1em;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        border-right: none;
     }
 
     .HomeLeftPanel button {
-        margin-bottom: 10px;
-        margin-top: 10px;
+        margin-left: 10px;
     }
 
     .ChannelsAndUsers {
-        padding-top: 70px;
-        padding-left: 1vw;
-        padding-right: 1vw;
-    }
-
-    .Channels {
-        border-bottom: 3px solid #f3f1f6;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-    }
-
-    .Channel {
-        position: relative;
-        height: 70px;
-        overflow: hidden;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        cursor: pointer;
-        border-radius: 100px 0px 0px 100px;
-    }
-
-    .Channel:hover {
-        background-color: #f3f1f6;
-    }
-
-    .ChannelImage {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-
-    .ChannelName {
-        position: absolute;
-        left: 70px;
-        top: 10px;
-        font-family: CircularStd-Bold;
-        font-size: 1em;
-        white-space: nowrap;
-    }
-
-    .ChannelLastMessage {
-        position: absolute;
-        left: 70px;
-        bottom: 15px;
-        color: #9a95aa;
-        white-space: nowrap;
-        font-size: 0.9em;
-    }
-
-    .Modal {
-        background-color: rgba(0, 0, 0, 0.3);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 4;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .Modal > div {
-        background-color: white;
-        padding: 20px;
-        border-radius: 20px;
-        position: relative;
-        padding-top: 70px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .Channels .Modal > div {
-        padding-bottom: 70px;
+        padding-top: 100px;
+        padding-left: 3vw;
+        padding-right: 3vw;
     }
 
     .Modal input {
-        border-radius: 1000px 0px 0px 1000px;
-        border: 1px solid #f7f6fa;
-        padding-right: 1em;
+        width: 200px;
     }
 
     .Modal button {
-        border-radius: 0px 1000px 1000px 0px;
-        padding-left: 1em;
+        margin-left: 0px;
     }
 
     .Modal .ChatName {
-        margin-bottom: 20px;
-    }
-
-    .CloseModal {
-        font-size: 0.8rem;
-        position: absolute;
-        top: 10px;
-        left: 0px;
-        background-color: white;
-        border: 1px solid #785dfb;
-        border-left: none;
-        color: #785dfb;
-    }
-
-    .CloseModal:hover {
-        color: white;
-        background-color: #785dfb;
+        max-width: 300px;
     }
 
     .SearchResults {
-        width: 340px;
-        height: 300px;
-        background-color: #f7f6fa;
-        color: #352956;
-        border-radius: 20px;
-        padding-bottom: 1em;
-        padding-top: 1em;
-        padding-left: 2em;
-        padding-right: 2em;
-        overflow: scroll;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    .SearchResult {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        color: #352956;
-    }
-
-    .SearchResult:hover {
-        color: #785dfb;
+        width: 300px;
     }
 
     .HomeMiddlePanel {
-        overflow: scroll;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
     }
 
     .ChatHeader {
-        padding-left: 1vw;
-        padding-right: 1vw;
-        border-bottom: 3px solid #f3f1f6;
-        position: fixed;
-        background-color: white;
-        width: 54vw;
-        z-index: 1;
+        padding-left: 20vw;
+        padding-right: 20vw;
+        word-wrap: break-word;
+        text-align: center;
+        width: 100vw;
+        font-size: 12px;
     }
 
     .ChatMessages {
-        padding-top: 60px;
-        padding-bottom: 80px;
-        position: relative;
-        padding-left: 1vw;
-        padding-right: 1vw;
+        padding-top: 100px;
     }
-
-    /* INBOUND */
-    .ChatMessageContainer {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    .ChatMessage {
-        max-width: 60%;
-        min-width: auto;
-        display: inline-block;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        padding-left: 40px;
-        position: relative;
-    }
-
-    .ChatMessageSender {
-        color: #9a95aa;
-        padding-top: 5px;
-    }
-
-    .ChatMessageImage {
-        position: absolute;
-        bottom: 25px;
-        left: 5px;
-    }
-
-    .ChatMessageBodyContainer {
-        width: 100%;
-    }
-
-    .ChatMessageBody {
-        background-color: #f7f6fa;
-        color: #352956;
-        max-width: 100%;
-        min-width: auto;
-        display: inline-block;
-        word-wrap: break-word;
-        border-radius: 10px 10px 10px 0px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    /* INBOUND */
-
-    /* OUTBOUND */
-    .ChatMessageContainerOutbound {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .ChatMessageOutbound {
-        max-width: 60%;
-        min-width: auto;
-        display: inline-block;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        padding-right: 40px;
-        position: relative;
-    }
-
-    .ChatMessageSenderOutbound {
-        color: #9a95aa;
-        padding-top: 5px;
-        text-align: right;
-    }
-
-    .ChatMessageImageOutbound {
-        position: absolute;
-        bottom: 25px;
-        right: 5px;
-    }
-
-    .ChatMessageBodyContainerOutbound {
-        width: 100%;
-        display: flex;
-    }
-
-    .ChatMessageBodyOutbound {
-        background-color: #785dfb;
-        color: white;
-        max-width: 100%;
-        min-width: auto;
-        display: inline-block;
-        word-wrap: break-word;
-        border-radius: 10px 10px 0px 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-left: auto;
-        margin-right: 0;
-    }
-    /* OUTBOUND */
 
     .ChatInput {
-        padding-left: 1vw;
-        padding-right: 1vw;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        border-top: 3px solid #f3f1f6;
-        background-color: white;
-        width: 54vw;
-        position: fixed;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    .ChatInput form {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        width: 100vw;
     }
 
     .ChatInput input {
-        width: 40vw;
+        width: 60vw;
     }
 
     .HomeRightPanel {
-        overflow: scroll;
-        border-left: 3px solid #f3f1f6;
-        z-index: 2;
-        background-color: white;
-    }
-
-    .HomeRightPanel button {
-        margin-bottom: 10px;
-        margin-top: 10px;
+        /* display: none; */
+        border-left: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 100vw;
     }
 
     .ChatInfo .Fixed {
-        width: 23vw;
-        background-color: white;
-        padding-left: 1vw;
-        padding-right: 1vw;
-        border-bottom: 3px solid #f3f1f6;
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 20px;
-    }
-
-    .ChatInfo .Fixed img {
-        width: 120px;
+        width: 100vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-top: 30px;
+        padding-bottom: 20px;
     }
 
     .ChatName {
-        font-size: 1.4em;
-        font-family: CircularStd-Medium;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        font-size: 2em;
     }
 
     .ChannelInfo {
-        padding-top: 190px;
-        padding-left: 1vw;
-        padding-right: 1vw;
-        position: relative;
-        padding-bottom: 80px;
+        padding-top: 250px;
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 
     .ChannelMember {
         position: relative;
         overflow: hidden;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: 30px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 40px;
     }
 
     .ChannelMemberImage {
-        position: absolute;
+        width: 40px;
     }
 
     .ChannelMemberName {
-        position: absolute;
-        left: 40px;
-        white-space: nowrap;
+        top: 10px;
+        left: 50px;
     }
 
     .Logout {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 23vw;
-        background-color: white;
-        border-left: 3px solid #f3f1f6;
-        border-top: 3px solid #f3f1f6;
-        padding-left: 1vw;
-        padding-right: 1vw;
-        z-index: 3;
-        display: flex;
-        justify-content: space-between;
+        width: 100vw;
+        border-left: none;
+        padding: 0.5em;
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
 
     .EmptyRightPanel {
-        width: 23vw;
-        height: 100vh;
-        overflow: hidden;
+        width: 100vw;
     }
 
-    .EmptyRightPanel img {
-        border-radius: 0;
+    .EmptyRightPanel .Carousel {
+        width: 100vw;
     }
 
     .EmptyChat {
-        display: flex;
-        height: 50vh;
-        justify-content: center;
-        align-items: center;
-        font-size: 2em;
-        color: #9a95aa;
-    }
-
-    .BackgroundColor {
-        padding-top: 190px;
-        height: 300%;
-        width: auto;
+        height: 70vh;
     }
 }
 
