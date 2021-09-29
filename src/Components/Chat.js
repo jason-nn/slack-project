@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import axios from "axios";
 
@@ -28,6 +28,16 @@ export default function Chat({
     }
 
     const sendMessageRef = useRef();
+    const ChatMessagesEndRef = useRef(null);
+
+    function scrollToBottom() {
+        console.log(ChatMessagesEndRef);
+        ChatMessagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [DisplayChat]);
 
     return (
         <>
@@ -42,22 +52,20 @@ export default function Chat({
                 </i>
             </div> */}
 
-            <div className="ChatMessagesWrapper">
-                <div className="ChatMessages">
-                    {DisplayChat.length > 0 ? (
-                        renderChat()
-                    ) : (
-                        <>
-                            <div className="emptyChat">
-                                <div>
-                                    {DisplayChatName
-                                        ? "No previous messages"
-                                        : "No chat selected"}
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </div>
+            <div className="ChatMessages">
+                {DisplayChat.length > 0 ? (
+                    <>
+                        {renderChat()} <div ref={ChatMessagesEndRef} />
+                    </>
+                ) : (
+                    <div className="EmptyChat">
+                        <div>
+                            {DisplayChatName
+                                ? "No previous messages"
+                                : "No chat selected"}
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="ChatInput">

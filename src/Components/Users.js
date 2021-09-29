@@ -67,7 +67,7 @@ export default function Users({
 
     return (
         <>
-            <div className="header">Users</div>
+            <div className="Header">Users</div>
 
             <button
                 onClick={() => {
@@ -78,11 +78,11 @@ export default function Users({
             </button>
 
             {DisplayModal ? (
-                <div className="modal">
+                <div className="Modal">
                     <div>
                         <button
                             onClick={() => setDisplayModal(false)}
-                            className="closeModal"
+                            className="CloseModal"
                         >
                             Close
                         </button>
@@ -160,7 +160,7 @@ export default function Users({
                             <button>Add</button>
                         </form>
 
-                        <div className="searchResults"></div>
+                        <div className="SearchResults"></div>
                     </div>
                 </div>
             ) : null}
@@ -168,7 +168,7 @@ export default function Users({
             {DisplayUsers ? (
                 renderUsers()
             ) : (
-                <div className="header">No Users</div>
+                <div className="Header">No Users</div>
             )}
         </>
     );

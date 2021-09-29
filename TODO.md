@@ -1,6 +1,5 @@
 1. Check if new channel was created, set success and error
-2. Add auto scroll
-3. Design mobile
-4. Search for invite user | add user to chat
-5. Error validation (optional)
-6. Code review and refactoring
+2. Design mobile
+3. Search for invite user | add user to chat
+4. Error validation (optional)
+5. Code review and refactoring

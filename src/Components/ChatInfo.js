@@ -16,6 +16,7 @@ export default function ChatInfo({
     setError,
     ChannelMembers,
     setChannelMembers,
+    Fun,
 }) {
     const [DisplayModal, setDisplayModal] = useState(false);
 
@@ -40,7 +41,7 @@ export default function ChatInfo({
     return (
         <div className="ChatInfo">
             {DisplayChatClass ? (
-                <div className="fixed">
+                <div className="Fixed">
                     <div>
                         <img
                             src={
@@ -71,14 +72,14 @@ export default function ChatInfo({
 
             {DisplayChatClass === "Channel" ? (
                 <div className="ChannelInfo">
-                    <div className="header">Members</div>
+                    <div className="Header">Members</div>
 
                     {DisplayModal ? (
-                        <div className="modal">
+                        <div className="Modal">
                             <div>
                                 <button
                                     onClick={() => setDisplayModal(false)}
-                                    className="closeModal"
+                                    className="CloseModal"
                                 >
                                     Close
                                 </button>
@@ -225,7 +226,7 @@ export default function ChatInfo({
                                     <button>Invite</button>
                                 </form>
 
-                                <div className="searchResults"></div>
+                                <div className="SearchResults"></div>
                             </div>
                         </div>
                     ) : null}
@@ -244,10 +245,29 @@ export default function ChatInfo({
                 <>
                     <div className="EmptyRightPanel">
                         {DisplayChatClass === "User" ? (
-                            <Carousel2
-                                DisplayChatID={DisplayChatID}
-                                DisplayChatClass={DisplayChatClass}
-                            />
+                            Fun ? (
+                                <>
+                                    <Carousel2
+                                        DisplayChatID={DisplayChatID}
+                                        DisplayChatClass={DisplayChatClass}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    <img
+                                        className="BackgroundColor"
+                                        src={
+                                            avatars[
+                                                calculateIndex(
+                                                    DisplayChatID,
+                                                    DisplayChatClass
+                                                )
+                                            ]
+                                        }
+                                        alt="background color"
+                                    />
+                                </>
+                            )
                         ) : (
                             <Carousel />
                         )}

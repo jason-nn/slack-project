@@ -67,12 +67,12 @@ export default function Channels({
 
     return (
         <div className="Channels">
-            <div className="header">Channels</div>
+            <div className="Header">Channels</div>
 
             {Channels ? (
                 renderChannels()
             ) : (
-                <div className="header">No channels</div>
+                <div className="Header">No channels</div>
             )}
 
             <button
@@ -84,11 +84,11 @@ export default function Channels({
             </button>
 
             {DisplayModal ? (
-                <div className="modal">
+                <div className="Modal">
                     <div>
                         <button
                             onClick={() => setDisplayModal(false)}
-                            className="closeModal"
+                            className="CloseModal"
                         >
                             Close
                         </button>

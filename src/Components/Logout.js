@@ -4,9 +4,18 @@ export default function Logout({
     setUserData,
     setUserHeaders,
     setDisplayLoading,
+    Fun,
+    setFun,
 }) {
     return (
         <div className="Logout">
+            <button
+                onClick={() => {
+                    setFun(!Fun);
+                }}
+            >
+                Fun
+            </button>
             <button
                 onClick={() => {
                     setUserData(null);

@@ -23,6 +23,7 @@ export default function Home({
     const [DisplayChatClass, setDisplayChatClass] = useState(null);
     const [AllUsers, setAllUsers] = useState(null);
     const [ChannelMembers, setChannelMembers] = useState(null);
+    const [Fun, setFun] = useState(false);
 
     useEffect(() => {
         let config = {
@@ -48,7 +49,7 @@ export default function Home({
     return (
         <div className="Home">
             <div className="HomeLeftPanel">
-                <div className="fixed">
+                <div className="Fixed">
                     <Logo />
                 </div>
 
@@ -106,12 +107,15 @@ export default function Home({
                     setError={(i) => setError(i)}
                     ChannelMembers={ChannelMembers}
                     setChannelMembers={(i) => setChannelMembers(i)}
+                    Fun={Fun}
                 />
 
                 <Logout
                     setUserData={(i) => setUserData(i)}
                     setUserHeaders={(i) => setUserHeaders(i)}
                     setDisplayLoading={(i) => setDisplayLoading(i)}
+                    setFun={(i) => setFun(i)}
+                    Fun={Fun}
                 />
             </div>
         </div>
