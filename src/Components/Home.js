@@ -140,7 +140,15 @@ export default function Home({
                 onClick={() => {
                     setDisplayLeftPanel(!DisplayLeftPanel);
                 }}
-            ></div>
+            >
+                <div
+                    className={DisplayLeftPanel ? "rotate45degrees" : null}
+                ></div>
+                <div className={DisplayLeftPanel ? "out" : null}></div>
+                <div
+                    className={DisplayLeftPanel ? "rotate-45degrees" : null}
+                ></div>
+            </div>
             <div
                 className={
                     DisplayLeftPanel ? "RightToggle Hide" : "RightToggle"
