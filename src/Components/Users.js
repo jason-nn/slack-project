@@ -35,7 +35,7 @@ export default function Users({
             .then((response) => {
                 setUsers(response?.data?.data);
                 const output = [];
-                for (let i = 0; i < 10; i++) {
+                for (let i = 14; i < 24; i++) {
                     output.push(response?.data?.data[i]);
                 }
                 setDisplayUsers(output);

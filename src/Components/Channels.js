@@ -13,6 +13,9 @@ export default function Channels({
     setChannelMembers,
     UserData,
     ChannelMembers,
+    setMessage,
+    setSuccess,
+    setError,
 }) {
     const [Channels, setChannels] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
@@ -118,8 +121,6 @@ export default function Channels({
 
                                 axios(config)
                                     .then((response) => {
-                                        setDisplayModal(false);
-
                                         let config = {
                                             method: "get",
                                             url: "channels",
@@ -137,6 +138,15 @@ export default function Channels({
                                                 setChannels(
                                                     response?.data?.data
                                                 );
+
+                                                setMessage(null);
+                                                setSuccess(null);
+                                                setError(
+                                                    "Channel name is already taken"
+                                                );
+                                                setTimeout(() => {
+                                                    setError(null);
+                                                }, 2000);
                                             })
                                             .catch((error) => {
                                                 console.log(error);
@@ -144,7 +154,6 @@ export default function Channels({
                                     })
                                     .catch((error) => {
                                         console.log(error);
-                                        setDisplayModal(false);
 
                                         let config = {
                                             method: "get",
@@ -163,6 +172,16 @@ export default function Channels({
                                                 setChannels(
                                                     response?.data?.data
                                                 );
+
+                                                setDisplayModal(false);
+                                                setMessage(null);
+                                                setError(null);
+                                                setSuccess(
+                                                    "Successfully created a new channel"
+                                                );
+                                                setTimeout(() => {
+                                                    setSuccess(null);
+                                                }, 2000);
                                             })
                                             .catch((error) => {
                                                 console.log(error);

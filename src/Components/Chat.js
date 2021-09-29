@@ -31,7 +31,6 @@ export default function Chat({
     const ChatMessagesEndRef = useRef(null);
 
     function scrollToBottom() {
-        console.log(ChatMessagesEndRef);
         ChatMessagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
 

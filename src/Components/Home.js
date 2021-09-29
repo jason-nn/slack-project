@@ -65,6 +65,9 @@ export default function Home({
                         DisplayChatID={DisplayChatID}
                         setChannelMembers={(i) => setChannelMembers(i)}
                         ChannelMembers={ChannelMembers}
+                        setMessage={(i) => setMessage(i)}
+                        setSuccess={(i) => setSuccess(i)}
+                        setError={(i) => setError(i)}
                     />
 
                     <Users
