@@ -4,15 +4,12 @@ import Channel from "./Channel";
 
 export default function Channels({
     UserHeaders,
+    DisplayChat,
     setDisplayChat,
     setDisplayChatName,
     setDisplayChatID,
     setDisplayChatClass,
-    DisplayChat,
-    DisplayChatID,
     setChannelMembers,
-    UserData,
-    ChannelMembers,
     setMessage,
     setSuccess,
     setError,
@@ -49,18 +46,15 @@ export default function Channels({
         for (let i = 0; i < Channels.length; i++) {
             output.push(
                 <Channel
-                    UserHeaders={UserHeaders}
                     key={Channels[i].id}
                     data={Channels[i]}
+                    UserHeaders={UserHeaders}
+                    DisplayChat={DisplayChat}
                     setDisplayChat={(i) => setDisplayChat(i)}
                     setDisplayChatName={(i) => setDisplayChatName(i)}
                     setDisplayChatID={(i) => setDisplayChatID(i)}
                     setDisplayChatClass={(i) => setDisplayChatClass(i)}
-                    DisplayChat={DisplayChat}
-                    DisplayChatID={DisplayChatID}
                     setChannelMembers={(i) => setChannelMembers(i)}
-                    UserData={UserData}
-                    ChannelMembers={ChannelMembers}
                 />
             );
         }

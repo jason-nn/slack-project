@@ -4,17 +4,17 @@ import User from "./User";
 import SearchResult from "./SearchResult";
 
 export default function Users({
+    UserData,
     UserHeaders,
+    DisplayChat,
+    AllUsers,
     setDisplayChat,
-    setMessage,
-    setSuccess,
-    setError,
     setDisplayChatName,
     setDisplayChatID,
     setDisplayChatClass,
-    DisplayChat,
-    UserData,
-    AllUsers,
+    setMessage,
+    setSuccess,
+    setError,
 }) {
     const [DisplayUsers, setDisplayUsers] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
@@ -52,10 +52,10 @@ export default function Users({
         for (let i = 0; i < DisplayUsers.length; i++) {
             output.push(
                 <User
-                    UserHeaders={UserHeaders}
-                    DisplayChat={DisplayChat}
                     key={DisplayUsers[i].id}
                     data={DisplayUsers[i]}
+                    UserHeaders={UserHeaders}
+                    DisplayChat={DisplayChat}
                     setDisplayChat={(i) => setDisplayChat(i)}
                     setDisplayChatName={(i) => setDisplayChatName(i)}
                     setDisplayChatID={(i) => setDisplayChatID(i)}
@@ -67,15 +67,14 @@ export default function Users({
     }
 
     useEffect(() => {
-        setFilteredUsers(
-            AllUsers.filter((User) => User.uid.includes(UserInput))
-        );
-    }, [UserInput]);
+        if (AllUsers)
+            setFilteredUsers(
+                AllUsers.filter((User) => User.uid.includes(UserInput))
+            );
+    }, [UserInput, AllUsers]);
 
     function renderSearchResults() {
         const output = [];
-
-        console.log(FilteredUsers);
 
         for (let i = 0; i < FilteredUsers.length; i++) {
             output.push(

@@ -5,11 +5,11 @@ import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 export default function User({
     data,
     UserHeaders,
+    DisplayChat,
     setDisplayChat,
     setDisplayChatName,
     setDisplayChatID,
     setDisplayChatClass,
-    DisplayChat,
 }) {
     let config = {
         method: "get",

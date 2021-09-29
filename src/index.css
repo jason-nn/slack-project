@@ -16,28 +16,28 @@
 }
 
 * {
+    box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    box-sizing: border-box;
 }
 
 img {
+    display: block;
     width: 30px;
     height: auto;
-    display: block;
 }
 
 button {
-    text-align: center;
+    font-family: "CircularStd-Bold";
+    font-size: 1rem;
     color: white;
     background-color: #785dfb;
     border: 1px solid #785dfb;
+    text-align: center;
     padding: 0.5em;
     padding-left: 2em;
     padding-right: 2em;
-    font-family: "CircularStd-Bold";
-    font-size: 1rem;
-    border-radius: 100px;
+    border-radius: 100vw;
     cursor: pointer;
 }
 
@@ -47,18 +47,18 @@ button:hover {
 }
 
 input {
+    font-family: "CircularStd-Book";
+    font-size: 1rem;
     color: #352956;
     background-color: #f7f6fa;
     border: 0;
     padding: 0.5em;
     padding-left: 2em;
     padding-right: 2em;
-    font-family: "CircularStd-Book";
-    font-size: 1rem;
-    border-radius: 100px;
-    cursor: pointer;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    border-radius: 100vw;
+    cursor: pointer;
     width: 260px;
 }
 
@@ -71,28 +71,24 @@ input:focus {
 }
 
 .Header {
-    color: #9a95aa;
     font-size: 1.2em;
+    color: #9a95aa;
     margin-bottom: 15px;
     margin-top: 10px;
 }
 
 .Loading {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+    font-family: "CircularStd-Black";
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: center;
+    background-color: #785dfb;
     height: 100vh;
     width: 100vw;
-    background-color: #785dfb;
     z-index: 3;
-    position: fixed;
     top: 0;
     left: 0;
-    font-family: "CircularStd-Black";
 }
 
 .Loading > h2 {

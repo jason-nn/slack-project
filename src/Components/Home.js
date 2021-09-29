@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Logout from "./Logout";
+import axios from "axios";
+import Logo from "./Logo";
 import Channels from "./Channels";
 import Users from "./Users";
 import Chat from "./Chat";
 import ChatInfo from "./ChatInfo";
-import axios from "axios";
-import Logo from "./Logo";
+import Logout from "./Logout";
 
 export default function Home({
-    setUserData,
-    setUserHeaders,
     UserData,
     UserHeaders,
+    setUserData,
+    setUserHeaders,
+    setDisplayLoading,
     setMessage,
     setSuccess,
     setError,
-    setDisplayLoading,
 }) {
     const [DisplayChat, setDisplayChat] = useState([]);
     const [DisplayChatName, setDisplayChatName] = useState(null);
@@ -55,16 +55,13 @@ export default function Home({
 
                 <div className="ChannelsAndUsers">
                     <Channels
-                        UserData={UserData}
                         UserHeaders={UserHeaders}
+                        DisplayChat={DisplayChat}
                         setDisplayChat={(i) => setDisplayChat(i)}
                         setDisplayChatName={(i) => setDisplayChatName(i)}
                         setDisplayChatID={(i) => setDisplayChatID(i)}
                         setDisplayChatClass={(i) => setDisplayChatClass(i)}
-                        DisplayChat={DisplayChat}
-                        DisplayChatID={DisplayChatID}
                         setChannelMembers={(i) => setChannelMembers(i)}
-                        ChannelMembers={ChannelMembers}
                         setMessage={(i) => setMessage(i)}
                         setSuccess={(i) => setSuccess(i)}
                         setError={(i) => setError(i)}
@@ -73,15 +70,15 @@ export default function Home({
                     <Users
                         UserData={UserData}
                         UserHeaders={UserHeaders}
+                        DisplayChat={DisplayChat}
                         AllUsers={AllUsers}
                         setDisplayChat={(i) => setDisplayChat(i)}
                         setDisplayChatName={(i) => setDisplayChatName(i)}
+                        setDisplayChatID={(i) => setDisplayChatID(i)}
+                        setDisplayChatClass={(i) => setDisplayChatClass(i)}
                         setMessage={(i) => setMessage(i)}
                         setSuccess={(i) => setSuccess(i)}
                         setError={(i) => setError(i)}
-                        setDisplayChatID={(i) => setDisplayChatID(i)}
-                        setDisplayChatClass={(i) => setDisplayChatClass(i)}
-                        DisplayChat={DisplayChat}
                     />
                 </div>
             </div>
@@ -100,26 +97,25 @@ export default function Home({
 
             <div className="HomeRightPanel">
                 <ChatInfo
-                    UserData={UserData}
                     UserHeaders={UserHeaders}
                     DisplayChatName={DisplayChatName}
                     DisplayChatID={DisplayChatID}
                     DisplayChatClass={DisplayChatClass}
                     AllUsers={AllUsers}
+                    ChannelMembers={ChannelMembers}
+                    Fun={Fun}
+                    setChannelMembers={(i) => setChannelMembers(i)}
                     setMessage={(i) => setMessage(i)}
                     setSuccess={(i) => setSuccess(i)}
                     setError={(i) => setError(i)}
-                    ChannelMembers={ChannelMembers}
-                    setChannelMembers={(i) => setChannelMembers(i)}
-                    Fun={Fun}
                 />
 
                 <Logout
+                    Fun={Fun}
+                    setDisplayLoading={(i) => setDisplayLoading(i)}
                     setUserData={(i) => setUserData(i)}
                     setUserHeaders={(i) => setUserHeaders(i)}
-                    setDisplayLoading={(i) => setDisplayLoading(i)}
                     setFun={(i) => setFun(i)}
-                    Fun={Fun}
                 />
             </div>
         </div>

@@ -65,11 +65,11 @@ export default function Login({
                                     emailRef.current.value = null;
                                     passwordRef.current.value = null;
                                     setDisplayLoading(true);
-                                    setUserData(response?.data?.data);
-                                    setUserHeaders(response?.headers);
                                     setTimeout(() => {
                                         setDisplayLoading(false);
                                     }, 3300);
+                                    setUserData(response?.data?.data);
+                                    setUserHeaders(response?.headers);
                                     setError(null);
                                     setMessage(null);
                                     setSuccess("Successful login");

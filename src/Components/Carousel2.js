@@ -1,6 +1,6 @@
 import React from "react";
-import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 import CarouselRow from "./CarouselRow";
+import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function Carousel2({ DisplayChatID, DisplayChatClass }) {
     return (

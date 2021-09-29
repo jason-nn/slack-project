@@ -1,7 +1,7 @@
 import React from "react";
 import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
-export default function ChatMessage({ UserData, data }) {
+export default function ChatMessage({ data, UserData }) {
     const outbound = UserData.id === data.sender.id;
 
     return (

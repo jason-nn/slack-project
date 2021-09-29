@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Login from "./Components/Login";
-import Home from "./Components/Home";
-import Loading from "./Components/Loading";
 import Toast from "./Components/Toast";
+import Loading from "./Components/Loading";
+import Home from "./Components/Home";
+import Login from "./Components/Login";
 
 export default function App() {
     axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
@@ -46,14 +46,14 @@ export default function App() {
             {UserData && UserHeaders ? (
                 <>
                     <Home
-                        setUserData={(i) => setUserData(i)}
-                        setUserHeaders={(i) => setUserHeaders(i)}
                         UserData={UserData}
                         UserHeaders={UserHeaders}
+                        setUserData={(i) => setUserData(i)}
+                        setUserHeaders={(i) => setUserHeaders(i)}
+                        setDisplayLoading={(i) => setDisplayLoading(i)}
                         setMessage={(i) => setMessage(i)}
                         setSuccess={(i) => setSuccess(i)}
                         setError={(i) => setError(i)}
-                        setDisplayLoading={(i) => setDisplayLoading(i)}
                     />
                 </>
             ) : (

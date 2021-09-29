@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChannelMember from "./ChannelMember";
-import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
-import Carousel from "./Carousel";
-import Carousel2 from "./Carousel2";
 import SearchResult from "./SearchResult";
+import Carousel2 from "./Carousel2";
+import Carousel from "./Carousel";
+import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function ChatInfo({
     UserHeaders,
@@ -12,12 +12,12 @@ export default function ChatInfo({
     DisplayChatID,
     DisplayChatClass,
     AllUsers,
+    ChannelMembers,
+    Fun,
+    setChannelMembers,
     setMessage,
     setSuccess,
     setError,
-    ChannelMembers,
-    setChannelMembers,
-    Fun,
 }) {
     const [DisplayModal, setDisplayModal] = useState(false);
     const [UserInput, setUserInput] = useState("");
@@ -40,15 +40,14 @@ export default function ChatInfo({
     }
 
     useEffect(() => {
-        setFilteredUsers(
-            AllUsers.filter((User) => User.uid.includes(UserInput))
-        );
-    }, [UserInput]);
+        if (AllUsers)
+            setFilteredUsers(
+                AllUsers.filter((User) => User.uid.includes(UserInput))
+            );
+    }, [UserInput, AllUsers]);
 
     function renderSearchResults() {
         const output = [];
-
-        console.log(FilteredUsers);
 
         for (let i = 0; i < FilteredUsers.length; i++) {
             output.push(

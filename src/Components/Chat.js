@@ -1,15 +1,15 @@
 import React, { useRef, useEffect } from "react";
-import ChatMessage from "./ChatMessage";
 import axios from "axios";
+import ChatMessage from "./ChatMessage";
 
 export default function Chat({
+    UserData,
+    UserHeaders,
     DisplayChat,
     DisplayChatName,
     DisplayChatID,
-    UserHeaders,
     DisplayChatClass,
     setDisplayChat,
-    UserData,
 }) {
     function renderChat() {
         const output = [];

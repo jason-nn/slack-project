@@ -5,12 +5,11 @@ import { icons, calculateIndex } from "../Utilities/ImageGenerator";
 export default function Channel({
     data,
     UserHeaders,
+    DisplayChat,
     setDisplayChat,
     setDisplayChatName,
     setDisplayChatID,
     setDisplayChatClass,
-    DisplayChat,
-    DisplayChatID,
     setChannelMembers,
 }) {
     let config = {

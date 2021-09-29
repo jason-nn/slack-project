@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function Logout({
+    Fun,
+    setDisplayLoading,
     setUserData,
     setUserHeaders,
-    setDisplayLoading,
-    Fun,
     setFun,
 }) {
     return (
