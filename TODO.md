@@ -1,6 +1,5 @@
-1. Search for invite user | add user to chat
-2. Upload to Github pages
-3. Design mobile
-4. Code review and refactoring
-5. Error validation (optional)
-6. Send application
+1. Code review and refactoring
+2. Design mobile
+3. Upload to Github pages
+4. Error validation (optional)
+5. Send application
