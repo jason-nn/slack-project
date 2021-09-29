@@ -678,7 +678,6 @@ input:focus {
 .Logout {
     position: fixed;
     bottom: 0;
-    right: 0;
     width: 23vw;
     background-color: white;
     border-left: 3px solid #f3f1f6;
