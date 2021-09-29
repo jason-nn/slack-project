@@ -20,7 +20,7 @@ export default function Channels({
     const [Channels, setChannels] = useState(null);
     const [DisplayModal, setDisplayModal] = useState(false);
 
-    const newChannelRef = useRef();
+    const newChannelRef = useRef(null);
 
     useEffect(() => {
         let config = {
@@ -90,7 +90,10 @@ export default function Channels({
                 <div className="Modal">
                     <div>
                         <button
-                            onClick={() => setDisplayModal(false)}
+                            onClick={() => {
+                                setDisplayModal(false);
+                                newChannelRef.current.value = null;
+                            }}
                             className="CloseModal"
                         >
                             Close
@@ -173,6 +176,8 @@ export default function Channels({
                                                     response?.data?.data
                                                 );
 
+                                                newChannelRef.current.value =
+                                                    null;
                                                 setDisplayModal(false);
                                                 setMessage(null);
                                                 setError(null);

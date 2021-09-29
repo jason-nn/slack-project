@@ -104,7 +104,10 @@ export default function ChatInfo({
                         <div className="Modal">
                             <div>
                                 <button
-                                    onClick={() => setDisplayModal(false)}
+                                    onClick={() => {
+                                        setDisplayModal(false);
+                                        setUserInput("");
+                                    }}
                                     className="CloseModal"
                                 >
                                     Close
@@ -210,6 +213,9 @@ export default function ChatInfo({
                                                                     );
                                                                     setDisplayModal(
                                                                         false
+                                                                    );
+                                                                    setUserInput(
+                                                                        ""
                                                                     );
                                                                 }
                                                             )
