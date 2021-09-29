@@ -453,6 +453,17 @@ input:focus {
     margin-bottom: 20px;
 }
 
+.SearchResult {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #352956;
+}
+
+.SearchResult:hover {
+    color: #785dfb;
+}
+
 .HomeMiddlePanel {
     overflow: scroll;
 }

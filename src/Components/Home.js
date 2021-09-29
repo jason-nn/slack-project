@@ -73,6 +73,7 @@ export default function Home({
                     <Users
                         UserData={UserData}
                         UserHeaders={UserHeaders}
+                        AllUsers={AllUsers}
                         setDisplayChat={(i) => setDisplayChat(i)}
                         setDisplayChatName={(i) => setDisplayChatName(i)}
                         setMessage={(i) => setMessage(i)}

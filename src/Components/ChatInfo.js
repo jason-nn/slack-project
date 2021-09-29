@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChannelMember from "./ChannelMember";
 import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
 import Carousel from "./Carousel";
 import Carousel2 from "./Carousel2";
+import SearchResult from "./SearchResult";
 
 export default function ChatInfo({
     UserHeaders,
@@ -19,6 +20,8 @@ export default function ChatInfo({
     Fun,
 }) {
     const [DisplayModal, setDisplayModal] = useState(false);
+    const [UserInput, setUserInput] = useState("");
+    const [FilteredUsers, setFilteredUsers] = useState(null);
 
     function renderChannelMembers() {
         const output = [];
@@ -36,7 +39,30 @@ export default function ChatInfo({
         return output;
     }
 
-    const inviteUserRef = useRef(null);
+    useEffect(() => {
+        setFilteredUsers(
+            AllUsers.filter((User) => User.uid.includes(UserInput))
+        );
+    }, [UserInput]);
+
+    function renderSearchResults() {
+        const output = [];
+
+        console.log(FilteredUsers);
+
+        for (let i = 0; i < FilteredUsers.length; i++) {
+            output.push(
+                <SearchResult
+                    key={FilteredUsers[i].id}
+                    data={FilteredUsers[i]}
+                    setUserInput={(i) => {
+                        setUserInput(i);
+                    }}
+                />
+            );
+        }
+        return output;
+    }
 
     return (
         <div className="ChatInfo">
@@ -92,8 +118,7 @@ export default function ChatInfo({
                                     onSubmit={(e) => {
                                         e.preventDefault();
 
-                                        const inviteUser =
-                                            inviteUserRef.current.value;
+                                        const inviteUser = UserInput;
                                         const uids = AllUsers.map(
                                             (User) => User.uid
                                         );
@@ -113,8 +138,7 @@ export default function ChatInfo({
                                             );
 
                                             if (index2 === -1) {
-                                                inviteUserRef.current.value =
-                                                    null;
+                                                setUserInput("");
 
                                                 let data = {
                                                     id: DisplayChatID,
@@ -221,12 +245,19 @@ export default function ChatInfo({
                                     <input
                                         type="text"
                                         placeholder="jason@bubble.com"
-                                        ref={inviteUserRef}
+                                        value={UserInput}
+                                        onChange={(e) => {
+                                            setUserInput(e.target.value);
+                                        }}
                                     />
                                     <button>Invite</button>
                                 </form>
 
-                                <div className="SearchResults"></div>
+                                <div className="SearchResults">
+                                    {FilteredUsers
+                                        ? renderSearchResults()
+                                        : null}
+                                </div>
                             </div>
                         </div>
                     ) : null}

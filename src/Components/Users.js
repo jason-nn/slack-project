@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import User from "./User";
+import SearchResult from "./SearchResult";
 
 export default function Users({
     UserHeaders,
@@ -13,11 +14,12 @@ export default function Users({
     setDisplayChatClass,
     DisplayChat,
     UserData,
+    AllUsers,
 }) {
-    const [Users, setUsers] = useState(null);
     const [DisplayUsers, setDisplayUsers] = useState(null);
-    const addUserRef = useRef(null);
     const [DisplayModal, setDisplayModal] = useState(false);
+    const [UserInput, setUserInput] = useState("");
+    const [FilteredUsers, setFilteredUsers] = useState(null);
 
     useEffect(() => {
         let config = {
@@ -33,7 +35,6 @@ export default function Users({
 
         axios(config)
             .then((response) => {
-                setUsers(response?.data?.data);
                 const output = [];
                 for (let i = 14; i < 24; i++) {
                     output.push(response?.data?.data[i]);
@@ -59,6 +60,31 @@ export default function Users({
                     setDisplayChatName={(i) => setDisplayChatName(i)}
                     setDisplayChatID={(i) => setDisplayChatID(i)}
                     setDisplayChatClass={(i) => setDisplayChatClass(i)}
+                />
+            );
+        }
+        return output;
+    }
+
+    useEffect(() => {
+        setFilteredUsers(
+            AllUsers.filter((User) => User.uid.includes(UserInput))
+        );
+    }, [UserInput]);
+
+    function renderSearchResults() {
+        const output = [];
+
+        console.log(FilteredUsers);
+
+        for (let i = 0; i < FilteredUsers.length; i++) {
+            output.push(
+                <SearchResult
+                    key={FilteredUsers[i].id}
+                    data={FilteredUsers[i]}
+                    setUserInput={(i) => {
+                        setUserInput(i);
+                    }}
                 />
             );
         }
@@ -93,14 +119,14 @@ export default function Users({
                             onSubmit={(e) => {
                                 e.preventDefault();
 
-                                const addUser = addUserRef.current.value;
-                                const uids = Users.map((User) => User.uid);
+                                const addUser = UserInput;
+                                const uids = AllUsers.map((User) => User.uid);
                                 const index = uids.findIndex(
                                     (uid) => uid === addUser
                                 );
 
                                 if (index > -1) {
-                                    const newUser = Users[index];
+                                    const newUser = AllUsers[index];
 
                                     const ids = DisplayUsers.map(
                                         (User) => User.id
@@ -127,7 +153,7 @@ export default function Users({
                                         DisplayUsersCopy.unshift(newUser);
                                         DisplayUsersCopy.pop();
                                         setDisplayUsers(DisplayUsersCopy);
-                                        addUserRef.current.value = null;
+                                        setUserInput("");
                                         setMessage(null);
                                         setSuccess("Added " + newUser.uid);
                                         setError(null);
@@ -154,13 +180,18 @@ export default function Users({
                         >
                             <input
                                 type="text"
-                                ref={addUserRef}
+                                value={UserInput}
+                                onChange={(e) => {
+                                    setUserInput(e.target.value);
+                                }}
                                 placeholder="jason@bubble.com"
                             />
                             <button>Add</button>
                         </form>
 
-                        <div className="SearchResults"></div>
+                        <div className="SearchResults">
+                            {FilteredUsers ? renderSearchResults() : null}
+                        </div>
                     </div>
                 </div>
             ) : null}
