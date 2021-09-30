@@ -13,7 +13,7 @@ export default function ChannelsModal({
     const newChannelRef = useRef(null);
 
     return (
-        <>
+        <div className="ChannelsModal">
             {DisplayUserChannelsModal ? (
                 <div className="Modal">
                     <div>
@@ -134,6 +134,6 @@ export default function ChannelsModal({
                     </div>
                 </div>
             ) : null}
-        </>
+        </div>
     );
 }

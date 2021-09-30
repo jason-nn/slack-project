@@ -1,2 +1,1 @@
-1. Move out chatinfo modal
-2. Bug - images not showing on local
+1. Bug - images not showing on local

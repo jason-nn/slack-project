@@ -402,7 +402,7 @@ input:focus {
     align-items: center;
 }
 
-.Channels .Modal > div {
+.ChannelsModal .Modal > div {
     padding-bottom: 70px;
 }
 
@@ -426,7 +426,7 @@ input:focus {
 .CloseModal {
     font-size: 0.8rem;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 0px;
     background-color: white;
     border: 1px solid #785dfb;

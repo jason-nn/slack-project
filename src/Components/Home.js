@@ -10,6 +10,7 @@ import UsersModal from "./UsersModal";
 import ChannelsModal from "./ChannelsModal";
 import LeftToggle from "./LeftToggle";
 import RightToggle from "./RightToggle";
+import ChatInfoModal from "./ChatInfoModal";
 
 export default function Home({
     UserData,
@@ -35,6 +36,7 @@ export default function Home({
     const [UserChannels, setUserChannels] = useState(null);
     const [DisplayUserChannelsModal, setDisplayUserChannelsModal] =
         useState(false);
+    const [DisplayChatInfoModal, setDisplayChatInfoModal] = useState(false);
 
     useEffect(() => {
         let config = {
@@ -122,17 +124,13 @@ export default function Home({
                 }
             >
                 <ChatInfo
-                    UserHeaders={UserHeaders}
                     DisplayChatName={DisplayChatName}
                     DisplayChatID={DisplayChatID}
                     DisplayChatClass={DisplayChatClass}
                     AllUsers={AllUsers}
                     ChannelMembers={ChannelMembers}
                     Fun={Fun}
-                    setChannelMembers={(i) => setChannelMembers(i)}
-                    setMessage={(i) => setMessage(i)}
-                    setSuccess={(i) => setSuccess(i)}
-                    setError={(i) => setError(i)}
+                    setDisplayChatInfoModal={(i) => setDisplayChatInfoModal(i)}
                 />
 
                 <Logout
@@ -166,6 +164,20 @@ export default function Home({
                 setDisplayUserChannelsModal={(i) =>
                     setDisplayUserChannelsModal(i)
                 }
+            />
+
+            <ChatInfoModal
+                UserHeaders={UserHeaders}
+                AllUsers={AllUsers}
+                DisplayChatName={DisplayChatName}
+                DisplayChatID={DisplayChatID}
+                DisplayChatInfoModal={DisplayChatInfoModal}
+                ChannelMembers={ChannelMembers}
+                setChannelMembers={(i) => setChannelMembers(i)}
+                setMessage={(i) => setMessage(i)}
+                setSuccess={(i) => setSuccess(i)}
+                setError={(i) => setError(i)}
+                setDisplayChatInfoModal={(i) => setDisplayChatInfoModal(i)}
             />
 
             <LeftToggle
