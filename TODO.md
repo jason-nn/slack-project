@@ -1,3 +1,2 @@
-1. Move out channels modal
-2. Move out chatinfo modal
-3. Bug - images not showing on local
+1. Move out chatinfo modal
+2. Bug - images not showing on local

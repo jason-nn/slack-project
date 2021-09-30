@@ -7,6 +7,7 @@ import Chat from "./Chat";
 import ChatInfo from "./ChatInfo";
 import Logout from "./Logout";
 import UsersModal from "./UsersModal";
+import ChannelsModal from "./ChannelsModal";
 import LeftToggle from "./LeftToggle";
 import RightToggle from "./RightToggle";
 
@@ -27,10 +28,13 @@ export default function Home({
     const [AllUsers, setAllUsers] = useState(null);
     const [ChannelMembers, setChannelMembers] = useState(null);
     const [Fun, setFun] = useState(false);
-    const [DisplayUsers, setDisplayUsers] = useState(null);
-    const [DisplayUsersModal, setDisplayUsersModal] = useState(false);
     const [DisplayLeftPanel, setDisplayLeftPanel] = useState(false);
     const [DisplayRightPanel, setDisplayRightPanel] = useState(false);
+    const [DisplayUsers, setDisplayUsers] = useState(null);
+    const [DisplayUsersModal, setDisplayUsersModal] = useState(false);
+    const [UserChannels, setUserChannels] = useState(null);
+    const [DisplayUserChannelsModal, setDisplayUserChannelsModal] =
+        useState(false);
 
     useEffect(() => {
         let config = {
@@ -70,15 +74,17 @@ export default function Home({
                     <Channels
                         UserHeaders={UserHeaders}
                         DisplayChat={DisplayChat}
+                        UserChannels={UserChannels}
                         setDisplayChat={(i) => setDisplayChat(i)}
                         setDisplayChatName={(i) => setDisplayChatName(i)}
                         setDisplayChatID={(i) => setDisplayChatID(i)}
                         setDisplayChatClass={(i) => setDisplayChatClass(i)}
                         setChannelMembers={(i) => setChannelMembers(i)}
-                        setMessage={(i) => setMessage(i)}
-                        setSuccess={(i) => setSuccess(i)}
-                        setError={(i) => setError(i)}
                         setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
+                        setUserChannels={(i) => setUserChannels(i)}
+                        setDisplayUserChannelsModal={(i) =>
+                            setDisplayUserChannelsModal(i)
+                        }
                     />
 
                     <Users
@@ -148,6 +154,18 @@ export default function Home({
                 setError={(i) => setError(i)}
                 setDisplayUsers={(i) => setDisplayUsers(i)}
                 setDisplayUsersModal={(i) => setDisplayUsersModal(i)}
+            />
+
+            <ChannelsModal
+                UserHeaders={UserHeaders}
+                DisplayUserChannelsModal={DisplayUserChannelsModal}
+                setMessage={(i) => setMessage(i)}
+                setSuccess={(i) => setSuccess(i)}
+                setError={(i) => setError(i)}
+                setUserChannels={(i) => setUserChannels(i)}
+                setDisplayUserChannelsModal={(i) =>
+                    setDisplayUserChannelsModal(i)
+                }
             />
 
             <LeftToggle
