@@ -991,8 +991,8 @@ input:focus {
     }
 
     .Dots div {
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
         border-radius: 100vw;
         background-color: #785dfb;
     }

@@ -6,6 +6,9 @@ import Users from "./Users";
 import Chat from "./Chat";
 import ChatInfo from "./ChatInfo";
 import Logout from "./Logout";
+import UsersModal from "./UsersModal";
+import LeftToggle from "./LeftToggle";
+import RightToggle from "./RightToggle";
 
 export default function Home({
     UserData,
@@ -24,6 +27,8 @@ export default function Home({
     const [AllUsers, setAllUsers] = useState(null);
     const [ChannelMembers, setChannelMembers] = useState(null);
     const [Fun, setFun] = useState(false);
+    const [DisplayUsers, setDisplayUsers] = useState(null);
+    const [DisplayUsersModal, setDisplayUsersModal] = useState(false);
     const [DisplayLeftPanel, setDisplayLeftPanel] = useState(false);
     const [DisplayRightPanel, setDisplayRightPanel] = useState(false);
 
@@ -77,18 +82,16 @@ export default function Home({
                     />
 
                     <Users
-                        UserData={UserData}
                         UserHeaders={UserHeaders}
                         DisplayChat={DisplayChat}
-                        AllUsers={AllUsers}
+                        DisplayUsers={DisplayUsers}
                         setDisplayChat={(i) => setDisplayChat(i)}
                         setDisplayChatName={(i) => setDisplayChatName(i)}
                         setDisplayChatID={(i) => setDisplayChatID(i)}
                         setDisplayChatClass={(i) => setDisplayChatClass(i)}
-                        setMessage={(i) => setMessage(i)}
-                        setSuccess={(i) => setSuccess(i)}
-                        setError={(i) => setError(i)}
                         setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
+                        setDisplayUsers={(i) => setDisplayUsers(i)}
+                        setDisplayUsersModal={(i) => setDisplayUsersModal(i)}
                     />
                 </div>
             </div>
@@ -135,48 +138,28 @@ export default function Home({
                 />
             </div>
 
-            <div
-                className={DisplayRightPanel ? "LeftToggle Hide" : "LeftToggle"}
-                onClick={() => {
-                    setDisplayLeftPanel(!DisplayLeftPanel);
-                }}
-            >
-                <div
-                    className={DisplayLeftPanel ? "rotate45degrees" : null}
-                ></div>
-                <div className={DisplayLeftPanel ? "middle" : null}></div>
-                <div
-                    className={DisplayLeftPanel ? "rotate-45degrees" : null}
-                ></div>
-            </div>
-            <div
-                className={
-                    DisplayLeftPanel ? "RightToggle Hide" : "RightToggle"
-                }
-                onClick={() => {
-                    setDisplayRightPanel(!DisplayRightPanel);
-                }}
-            >
-                <div
-                    className={DisplayRightPanel ? "rotate45degrees" : "vanish"}
-                ></div>
-                <div
-                    className={
-                        DisplayRightPanel
-                            ? "rotate45degrees-vanish Dots"
-                            : "Dots"
-                    }
-                >
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div
-                    className={
-                        DisplayRightPanel ? "rotate-45degrees" : "vanish"
-                    }
-                ></div>
-            </div>
+            <UsersModal
+                UserData={UserData}
+                AllUsers={AllUsers}
+                DisplayUsers={DisplayUsers}
+                DisplayUsersModal={DisplayUsersModal}
+                setMessage={(i) => setMessage(i)}
+                setSuccess={(i) => setSuccess(i)}
+                setError={(i) => setError(i)}
+                setDisplayUsers={(i) => setDisplayUsers(i)}
+                setDisplayUsersModal={(i) => setDisplayUsersModal(i)}
+            />
+
+            <LeftToggle
+                DisplayLeftPanel={DisplayLeftPanel}
+                DisplayRightPanel={DisplayRightPanel}
+                setDisplayLeftPanel={(i) => setDisplayLeftPanel(i)}
+            />
+            <RightToggle
+                DisplayLeftPanel={DisplayLeftPanel}
+                DisplayRightPanel={DisplayRightPanel}
+                setDisplayRightPanel={(i) => setDisplayRightPanel(i)}
+            />
         </div>
     );
 }
