@@ -722,6 +722,14 @@ input:focus {
     display: none;
 }
 
+.Sender {
+    font-size: 0.9em;
+}
+
+.Time {
+    font-size: 0.8em;
+}
+
 @media (orientation: portrait) {
     .LoginLeft {
         display: none;

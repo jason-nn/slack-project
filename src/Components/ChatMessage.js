@@ -41,8 +41,8 @@ export default function ChatMessage({ data, UserData }) {
                             : "ChatMessageSender"
                     }
                 >
-                    <div>{data.sender.uid}</div>
-                    <div>{time}</div>
+                    <div className="Sender">{data.sender.uid}</div>
+                    <div className="Time">{time}</div>
                 </div>
                 <div>
                     <img
