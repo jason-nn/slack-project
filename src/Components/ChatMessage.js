@@ -3,6 +3,10 @@ import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
 
 export default function ChatMessage({ data, UserData }) {
     const outbound = UserData.id === data.sender.id;
+    const time = new Date(data.created_at).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
     return (
         <div
@@ -37,7 +41,8 @@ export default function ChatMessage({ data, UserData }) {
                             : "ChatMessageSender"
                     }
                 >
-                    {data.sender.uid}
+                    <div>{data.sender.uid}</div>
+                    <div>{time}</div>
                 </div>
                 <div>
                     <img
