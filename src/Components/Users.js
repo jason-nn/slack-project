@@ -42,7 +42,7 @@ export default function Users({
     function renderUsers() {
         const output = [];
 
-        for (let i = 0; i < DisplayUsers.length; i++) {
+        for (let i = 0; i < DisplayUsers?.length; i++) {
             output.push(
                 <User
                     key={DisplayUsers[i].id}

@@ -14,7 +14,7 @@ export default function Chat({
     function renderChat() {
         const output = [];
 
-        for (let i = 0; i < DisplayChat.length; i++) {
+        for (let i = 0; i < DisplayChat?.length; i++) {
             output.push(
                 <ChatMessage
                     key={DisplayChat[i].id}
@@ -52,7 +52,7 @@ export default function Chat({
             </div> */}
 
             <div className="ChatMessages">
-                {DisplayChat.length > 0 ? (
+                {DisplayChat?.length > 0 ? (
                     <>
                         {renderChat()} <div ref={ChatMessagesEndRef} />
                     </>

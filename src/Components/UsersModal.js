@@ -25,7 +25,7 @@ export default function UsersModal({
     function renderSearchResults() {
         const output = [];
 
-        for (let i = 0; i < FilteredUsers.length; i++) {
+        for (let i = 0; i < FilteredUsers?.length; i++) {
             output.push(
                 <SearchResult
                     key={FilteredUsers[i].id}

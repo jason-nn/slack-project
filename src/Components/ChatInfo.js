@@ -16,7 +16,7 @@ export default function ChatInfo({
     function renderChannelMembers() {
         const output = [];
 
-        for (let i = 0; i < ChannelMembers.length; i++) {
+        for (let i = 0; i < ChannelMembers?.length; i++) {
             output.push(
                 <ChannelMember
                     key={ChannelMembers[i].id}

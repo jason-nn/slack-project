@@ -30,8 +30,8 @@ export default function Channel({
         axios(config)
             .then((response) => {
                 const messages = response?.data?.data;
-                if (messages.length > 0) {
-                    setLastMessage(messages[messages.length - 1].body);
+                if (messages?.length > 0) {
+                    setLastMessage(messages[messages?.length - 1].body);
                 }
             })
             .catch((error) => {

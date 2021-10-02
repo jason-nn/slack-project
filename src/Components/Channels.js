@@ -39,7 +39,7 @@ export default function Channels({
     function renderChannels() {
         const output = [];
 
-        for (let i = 0; i < UserChannels.length; i++) {
+        for (let i = 0; i < UserChannels?.length; i++) {
             output.push(
                 <Channel
                     key={UserChannels[i].id}
