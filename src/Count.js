@@ -7,7 +7,6 @@ export default function Count() {
 
     useEffect(() => {
         countID = setInterval(() => setCount(count + 1), 1000);
-        console.log(count);
 
         return () => clearInterval(countID);
     });

@@ -63,8 +63,6 @@ export default function Home({
 
     useEffect(() => {
         interval = setInterval(() => {
-            console.log(DisplayChatID);
-            console.log(DisplayChatClass);
             let config = {
                 method: "get",
                 url:
@@ -82,7 +80,6 @@ export default function Home({
 
             axios(config)
                 .then((response) => {
-                    console.log(response);
                     setDisplayChat(response?.data?.data);
                 })
                 .catch((error) => {
