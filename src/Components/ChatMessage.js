@@ -48,7 +48,7 @@ export default function ChatMessage({ data, UserData }) {
                 >
                     <div className="Sender">{data.sender.uid}</div>
                     <div className="Time">
-                        {date} {time}
+                        {date} | {time}
                     </div>
                 </div>
                 <div>
