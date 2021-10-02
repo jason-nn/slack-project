@@ -59,6 +59,40 @@ export default function Home({
             });
     }, []);
 
+    let interval;
+
+    useEffect(() => {
+        interval = setInterval(() => {
+            console.log(DisplayChatID);
+            console.log(DisplayChatClass);
+            let config = {
+                method: "get",
+                url:
+                    "messages?receiver_id=" +
+                    DisplayChatID +
+                    "&receiver_class=" +
+                    DisplayChatClass,
+                headers: {
+                    "access-token": UserHeaders["access-token"],
+                    client: UserHeaders.client,
+                    expiry: UserHeaders.expiry,
+                    uid: UserHeaders.uid,
+                },
+            };
+
+            axios(config)
+                .then((response) => {
+                    console.log(response);
+                    setDisplayChat(response?.data?.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 1500);
+
+        return () => clearInterval(interval);
+    }, [DisplayChatID, DisplayChatClass]);
+
     return (
         <div className="Home">
             <div
