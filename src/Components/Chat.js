@@ -56,7 +56,7 @@ export default function Chat({
 
     useEffect(() => {
         scrollToBottom();
-    }, [DisplayChat]);
+    }, [DisplayChatID]);
 
     return (
         <>
@@ -75,6 +75,12 @@ export default function Chat({
                 {DisplayChat?.length > 0 ? (
                     <>
                         {renderChat()} <div ref={ChatMessagesEndRef} />
+                        <div
+                            className="ScrollToBottom"
+                            onClick={() => scrollToBottom()}
+                        >
+                            &#11015;
+                        </div>
                     </>
                 ) : (
                     <div className="EmptyChat">
@@ -134,6 +140,7 @@ export default function Chat({
                                 axios(config)
                                     .then((response) => {
                                         setDisplayChat(response?.data?.data);
+                                        scrollToBottom();
                                     })
                                     .catch((error) => {
                                         console.log(error);
