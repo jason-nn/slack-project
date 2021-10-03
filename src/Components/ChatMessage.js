@@ -7,11 +7,11 @@ export default function ChatMessage({ data, UserData }) {
         hour: "2-digit",
         minute: "2-digit",
     });
-    const date = new Date(data.created_at).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    });
+    // const date = new Date(data.created_at).toLocaleDateString("en-US", {
+    //     year: "numeric",
+    //     month: "long",
+    //     day: "numeric",
+    // });
 
     return (
         <div
@@ -47,9 +47,7 @@ export default function ChatMessage({ data, UserData }) {
                     }
                 >
                     <div className="Sender">{data.sender.uid}</div>
-                    <div className="Time">
-                        {date} | {time}
-                    </div>
+                    <div className="Time">{time}</div>
                 </div>
                 <div>
                     <img

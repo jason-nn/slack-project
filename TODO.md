@@ -1,1 +1,4 @@
-1. Bug - images not showing on local
+1. Toggle Scroll
+2. Save user list to local storage
+3. Live update user and channel list
+4. Remember me

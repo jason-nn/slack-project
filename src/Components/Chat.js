@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import ChatMessage from "./ChatMessage";
+import ChatDate from "./ChatDate";
 
 export default function Chat({
     UserData,
@@ -12,19 +13,38 @@ export default function Chat({
     setDisplayChat,
 }) {
     function renderChat() {
-        const output = [];
+        if (DisplayChat.length) {
+            const output = [];
 
-        for (let i = 0; i < DisplayChat?.length; i++) {
-            output.push(
-                <ChatMessage
-                    key={DisplayChat[i].id}
-                    data={DisplayChat[i]}
-                    UserData={UserData}
-                />
-            );
+            let date = null;
+
+            for (let i = 0; i < DisplayChat?.length; i++) {
+                const messageDate = new Date(
+                    DisplayChat[i].created_at
+                ).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                });
+
+                if (messageDate !== date) {
+                    output.push(
+                        <ChatDate key={messageDate} data={DisplayChat[i]} />
+                    );
+                    date = messageDate;
+                }
+
+                output.push(
+                    <ChatMessage
+                        key={DisplayChat[i].id}
+                        data={DisplayChat[i]}
+                        UserData={UserData}
+                    />
+                );
+            }
+
+            return output;
         }
-
-        return output;
     }
 
     const sendMessageRef = useRef();
