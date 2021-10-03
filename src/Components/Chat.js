@@ -10,6 +10,7 @@ export default function Chat({
     DisplayChatName,
     DisplayChatID,
     DisplayChatClass,
+    DisplayScrollButton,
     setDisplayChat,
 }) {
     function renderChat() {
@@ -76,7 +77,11 @@ export default function Chat({
                     <>
                         {renderChat()} <div ref={ChatMessagesEndRef} />
                         <div
-                            className="ScrollToBottom"
+                            className={
+                                DisplayScrollButton
+                                    ? "ScrollToBottom"
+                                    : "ScrollToBottom vanish"
+                            }
                             onClick={() => scrollToBottom()}
                         >
                             &#11015;

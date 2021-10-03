@@ -1078,6 +1078,7 @@ input:focus {
         width: 40px;
         height: 40px;
         font-size: 1.3em;
+        transition: all 0.3s linear;
     }
 }
 

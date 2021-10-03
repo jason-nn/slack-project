@@ -37,6 +37,7 @@ export default function Home({
     const [DisplayUserChannelsModal, setDisplayUserChannelsModal] =
         useState(false);
     const [DisplayChatInfoModal, setDisplayChatInfoModal] = useState(false);
+    const [DisplayScrollButton, setDisplayScrollButton] = useState(false);
 
     useEffect(() => {
         let config = {
@@ -142,7 +143,23 @@ export default function Home({
                 </div>
             </div>
 
-            <div className="HomeMiddlePanel">
+            <div
+                className="HomeMiddlePanel"
+                onScroll={() => {
+                    const scrollTop =
+                        document.getElementsByClassName("HomeMiddlePanel")[0]
+                            .scrollTop;
+                    const scrollHeight =
+                        document.getElementsByClassName("HomeMiddlePanel")[0]
+                            .scrollHeight;
+                    const screenHeight = window.outerHeight;
+                    if (scrollHeight - scrollTop === screenHeight) {
+                        setDisplayScrollButton(false);
+                    } else {
+                        setDisplayScrollButton(true);
+                    }
+                }}
+            >
                 <Chat
                     UserData={UserData}
                     UserHeaders={UserHeaders}
@@ -150,6 +167,7 @@ export default function Home({
                     DisplayChatName={DisplayChatName}
                     DisplayChatID={DisplayChatID}
                     DisplayChatClass={DisplayChatClass}
+                    DisplayScrollButton={DisplayScrollButton}
                     setDisplayChat={(i) => setDisplayChat(i)}
                 />
             </div>
