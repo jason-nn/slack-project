@@ -173,6 +173,7 @@ export default function Home({
 
                 <Logout
                     Fun={Fun}
+                    DisplayChatClass={DisplayChatClass}
                     setDisplayLoading={(i) => setDisplayLoading(i)}
                     setUserData={(i) => setUserData(i)}
                     setUserHeaders={(i) => setUserHeaders(i)}

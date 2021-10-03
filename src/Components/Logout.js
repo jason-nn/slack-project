@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Logout({
     Fun,
+    DisplayChatClass,
     setDisplayLoading,
     setUserData,
     setUserHeaders,
@@ -9,13 +10,15 @@ export default function Logout({
 }) {
     return (
         <div className="Logout">
-            <button
-                onClick={() => {
-                    setFun(!Fun);
-                }}
-            >
-                Fun
-            </button>
+            {DisplayChatClass === "User" ? (
+                <button
+                    onClick={() => {
+                        setFun(!Fun);
+                    }}
+                >
+                    Fun
+                </button>
+            ) : null}
             <button
                 onClick={() => {
                     setUserData(null);
