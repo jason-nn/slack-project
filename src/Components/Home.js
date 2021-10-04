@@ -130,6 +130,7 @@ export default function Home({
 
                     <Users
                         UserHeaders={UserHeaders}
+                        AllUsers={AllUsers}
                         DisplayChat={DisplayChat}
                         DisplayUsers={DisplayUsers}
                         setDisplayChat={(i) => setDisplayChat(i)}

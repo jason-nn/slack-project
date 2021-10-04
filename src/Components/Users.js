@@ -4,6 +4,7 @@ import User from "./User";
 
 export default function Users({
     UserHeaders,
+    AllUsers,
     DisplayChat,
     DisplayUsers,
     setDisplayChat,
@@ -15,29 +16,14 @@ export default function Users({
     setDisplayUsersModal,
 }) {
     useEffect(() => {
-        let config = {
-            method: "get",
-            url: "users",
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        axios(config)
-            .then((response) => {
-                const output = [];
-                for (let i = 14; i < 24; i++) {
-                    output.push(response?.data?.data[i]);
-                }
-                setDisplayUsers(output);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+        if (AllUsers) {
+            const output = [];
+            for (let i = 25; i < 30; i++) {
+                output.push(AllUsers[i]);
+            }
+            setDisplayUsers(output);
+        }
+    }, [AllUsers]);
 
     function renderUsers() {
         const output = [];
