@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { icons, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function Channel({
     data,
@@ -82,7 +82,7 @@ export default function Channel({
                 <div>
                     <img
                         className="ChannelImage"
-                        src={icons[calculateIndex(data.id, "Channel")]}
+                        src={generateImage(data.id, "Channel")}
                         alt="icon"
                     />
                 </div>

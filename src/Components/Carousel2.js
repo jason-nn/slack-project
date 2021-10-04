@@ -1,6 +1,6 @@
 import React from "react";
 import CarouselRow from "./CarouselRow";
-import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function Carousel2({ DisplayChatID, DisplayChatClass }) {
     return (
@@ -8,37 +8,37 @@ export default function Carousel2({ DisplayChatID, DisplayChatClass }) {
             <CarouselRow
                 className={"CarouselRow CarouselRow1"}
                 images={[
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
                 ]}
             />
             <CarouselRow
                 className={"CarouselRow CarouselRow2"}
                 images={[
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
                 ]}
             />
             <CarouselRow
                 className={"CarouselRow CarouselRow1"}
                 images={[
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
                 ]}
             />
             <CarouselRow
                 className={"CarouselRow CarouselRow2"}
                 images={[
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
-                    avatars[calculateIndex(DisplayChatID, DisplayChatClass)],
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
+                    generateImage(DisplayChatID, DisplayChatClass),
                 ]}
             />
         </div>

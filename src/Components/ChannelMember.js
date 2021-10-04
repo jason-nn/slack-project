@@ -1,5 +1,5 @@
 import React from "react";
-import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function ChannelMember({ data, AllUsers }) {
     const ids = AllUsers.map((User) => User.id);
@@ -14,7 +14,7 @@ export default function ChannelMember({ data, AllUsers }) {
             <div>
                 <img
                     className="ChannelMemberImage"
-                    src={avatars[calculateIndex(data["user_id"], "User")]}
+                    src={generateImage(data["user_id"], "User")}
                     alt="avatar"
                 />
             </div>

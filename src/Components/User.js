@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function User({
     data,
@@ -59,7 +59,7 @@ export default function User({
                 <div>
                     <img
                         className="ChannelImage"
-                        src={avatars[calculateIndex(data.id, "User")]}
+                        src={generateImage(data.id, "User")}
                         alt="avatar"
                     />
                 </div>

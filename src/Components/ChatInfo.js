@@ -2,7 +2,7 @@ import React from "react";
 import ChannelMember from "./ChannelMember";
 import Carousel2 from "./Carousel2";
 import Carousel from "./Carousel";
-import { icons, avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function ChatInfo({
     DisplayChatName,
@@ -37,18 +37,14 @@ export default function ChatInfo({
                         <img
                             src={
                                 DisplayChatClass === "Channel"
-                                    ? icons[
-                                          calculateIndex(
-                                              DisplayChatID,
-                                              DisplayChatClass
-                                          )
-                                      ]
-                                    : avatars[
-                                          calculateIndex(
-                                              DisplayChatID,
-                                              DisplayChatClass
-                                          )
-                                      ]
+                                    ? generateImage(
+                                          DisplayChatID,
+                                          DisplayChatClass
+                                      )
+                                    : generateImage(
+                                          DisplayChatID,
+                                          DisplayChatClass
+                                      )
                             }
                             alt="icon/avatar"
                         />
@@ -90,14 +86,10 @@ export default function ChatInfo({
                                 <>
                                     <img
                                         className="BackgroundColor"
-                                        src={
-                                            avatars[
-                                                calculateIndex(
-                                                    DisplayChatID,
-                                                    DisplayChatClass
-                                                )
-                                            ]
-                                        }
+                                        src={generateImage(
+                                            DisplayChatID,
+                                            DisplayChatClass
+                                        )}
                                         alt="background color"
                                     />
                                 </>

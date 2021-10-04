@@ -1,5 +1,5 @@
 import React from "react";
-import { avatars, calculateIndex } from "../Utilities/ImageGenerator";
+import { generateImage } from "../Utilities/ImageGenerator";
 
 export default function ChatMessage({ data, UserData }) {
     const outbound = UserData.id === data.sender.id;
@@ -56,7 +56,7 @@ export default function ChatMessage({ data, UserData }) {
                                 ? "ChatMessageImageOutbound"
                                 : "ChatMessageImage"
                         }
-                        src={avatars[calculateIndex(data.sender.id, "User")]}
+                        src={generateImage(data.sender.id, "User")}
                         alt="avatar"
                     />
                 </div>
