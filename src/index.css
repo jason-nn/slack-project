@@ -501,6 +501,7 @@ input:focus {
     border: 2px solid #785dfb;
     cursor: pointer;
     margin-left: -5px;
+    transition: all 0.3s linear;
 }
 
 /* INBOUND */
@@ -774,6 +775,10 @@ input:focus {
     background-color: #9a95aa;
     border-radius: 100vw;
     z-index: -1;
+}
+
+.vanish {
+    opacity: 0;
 }
 
 @media (orientation: portrait) {

@@ -1,3 +1,5 @@
-1. Save user list to local storage
-2. Live update user and channel list
-3. Remember me
+1. Refactor generate image
+2. Move out static configs to utilities
+3. Save user list to local storage
+4. Live update user and channel list
+5. Remember me
