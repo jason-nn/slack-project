@@ -1,3 +1,2 @@
-1. Change css from fixed to grid
+1. Remember me
 2. Live update user and channel list
-3. Remember me
