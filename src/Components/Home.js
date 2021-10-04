@@ -152,7 +152,7 @@ export default function Home({
                     const scrollHeight =
                         document.getElementsByClassName("HomeMiddlePanel")[0]
                             .scrollHeight;
-                    const screenHeight = window.outerHeight;
+                    const screenHeight = window.innerHeight;
                     if (scrollHeight - scrollTop === screenHeight) {
                         setDisplayScrollButton(false);
                     } else {
