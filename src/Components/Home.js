@@ -129,6 +129,7 @@ export default function Home({
                     />
 
                     <Users
+                        UserData={UserData}
                         UserHeaders={UserHeaders}
                         AllUsers={AllUsers}
                         DisplayChat={DisplayChat}

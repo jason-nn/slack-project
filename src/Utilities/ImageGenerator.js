@@ -24,12 +24,10 @@ export const avatars = [
 ];
 
 export function generateImage(ID, type) {
-    let dividend;
     if (type === "Channel") {
         return icons[ID % 3];
     }
     if (type === "User") {
-        dividend = 8;
         return avatars[ID % 8];
     }
 }

@@ -92,8 +92,10 @@ export default function UsersModal({
                                             ...DisplayUsers,
                                         ];
                                         DisplayUsersCopy.unshift(newUser);
-                                        DisplayUsersCopy.pop();
+                                        // DisplayUsersCopy.pop();
                                         setDisplayUsers(DisplayUsersCopy);
+                                        localStorage.DisplayUsers =
+                                            JSON.stringify(DisplayUsersCopy);
                                         setUserInput("");
                                         setMessage(null);
                                         setSuccess("Added " + newUser.uid);

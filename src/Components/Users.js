@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import User from "./User";
 
 export default function Users({
+    UserData,
     UserHeaders,
     AllUsers,
     DisplayChat,
@@ -16,12 +16,21 @@ export default function Users({
     setDisplayUsersModal,
 }) {
     useEffect(() => {
-        if (AllUsers) {
-            const output = [];
-            for (let i = 25; i < 30; i++) {
-                output.push(AllUsers[i]);
+        if (localStorage.DisplayUsers) {
+            setDisplayUsers(
+                JSON.parse(localStorage.DisplayUsers).filter(
+                    (User) => User.id !== UserData.id
+                )
+            );
+        } else {
+            if (AllUsers) {
+                const output = [];
+                for (let i = 25; i < 30; i++) {
+                    output.push(AllUsers[i]);
+                }
+                setDisplayUsers(output);
+                localStorage.DisplayUsers = JSON.stringify(output);
             }
-            setDisplayUsers(output);
         }
     }, [AllUsers]);
 
