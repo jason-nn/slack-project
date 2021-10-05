@@ -784,8 +784,6 @@ input:focus {
 .KeepMeLoggedInCheckboxContainer {
     display: flex;
     align-items: center;
-    padding-top: 2em;
-    padding-bottom: 1em;
 }
 
 .KeepMeLoggedInCheckbox {
@@ -796,7 +794,7 @@ input:focus {
 }
 
 .KeepMeLoggedInCheckbox:checked + label::before {
-    content: "\002713";
+    content: "\002714";
     background-color: #785dfb;
     color: white;
     display: flex;
