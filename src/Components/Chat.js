@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import ChatMessage from "./ChatMessage";
 import ChatDate from "./ChatDate";
@@ -55,9 +55,20 @@ export default function Chat({
         ChatMessagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
 
+    // useEffect(() => {
+    //     scrollToBottom();
+    // }, [DisplayChatID]);
+
+    const [OldDisplayChat, setOldDisplayChat] = useState([]);
+
     useEffect(() => {
-        scrollToBottom();
-    }, [DisplayChatID]);
+        if (JSON.stringify(DisplayChat) !== JSON.stringify(OldDisplayChat)) {
+            scrollToBottom();
+        }
+        return () => {
+            setOldDisplayChat(DisplayChat);
+        };
+    }, [DisplayChat]);
 
     return (
         <>
