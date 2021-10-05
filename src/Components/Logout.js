@@ -27,6 +27,8 @@ export default function Logout({
                     setTimeout(() => {
                         setDisplayLoading(false);
                     }, 3300);
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("password");
                 }}
             >
                 Log out

@@ -16,6 +16,7 @@ export default function Login({
     const confirmPasswordRef = useRef(null);
 
     const [Login, setLogin] = useState(true);
+    const [KeepMeLoggedIn, setKeepMeLoggedIn] = useState(false);
 
     return (
         <div className="Login">
@@ -64,6 +65,7 @@ export default function Login({
                                 if (Login) {
                                     emailRef.current.value = null;
                                     passwordRef.current.value = null;
+                                    setKeepMeLoggedIn(false);
                                     setDisplayLoading(true);
                                     setTimeout(() => {
                                         setDisplayLoading(false);
@@ -76,6 +78,10 @@ export default function Login({
                                     setTimeout(() => {
                                         setSuccess(null);
                                     }, 2000);
+                                    if (KeepMeLoggedIn) {
+                                        localStorage.email = email;
+                                        localStorage.password = password;
+                                    }
                                 } else {
                                     emailRef.current.value = null;
                                     passwordRef.current.value = null;
@@ -120,7 +126,28 @@ export default function Login({
                         />
                     </label>
 
-                    {Login ? null : (
+                    {Login ? (
+                        <>
+                            <br />
+                            <div className="KeepMeLoggedInCheckboxContainer">
+                                <input
+                                    type="checkbox"
+                                    className="KeepMeLoggedInCheckbox"
+                                    id="KeepMeLoggedInCheckbox"
+                                    checked={KeepMeLoggedIn}
+                                    onChange={() =>
+                                        setKeepMeLoggedIn(!KeepMeLoggedIn)
+                                    }
+                                />
+                                <label
+                                    className="KeepMeLoggedInLabel"
+                                    for="KeepMeLoggedInCheckbox"
+                                >
+                                    Keep me logged in
+                                </label>
+                            </div>
+                        </>
+                    ) : (
                         <>
                             <br />
                             <label>

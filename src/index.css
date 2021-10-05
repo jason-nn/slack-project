@@ -781,6 +781,56 @@ input:focus {
     opacity: 0;
 }
 
+.KeepMeLoggedInCheckboxContainer {
+    display: flex;
+    align-items: center;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+.KeepMeLoggedInCheckbox {
+    width: auto;
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+}
+
+.KeepMeLoggedInCheckbox:checked + label::before {
+    content: "\002713";
+    background-color: #785dfb;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KeepMeLoggedInLabel {
+    cursor: pointer;
+    display: flex;
+    font-family: CircularStd-Medium;
+}
+
+.KeepMeLoggedInLabel::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    border: 0.15em solid #785dfb;
+    border-radius: 0.4em;
+    margin-right: 0.5em;
+}
+
+.KeepMeLoggedInLabel:hover {
+    color: #785dfb;
+}
+
+/* .KeepMeLoggedInLabel:hover::before {
+    background-color: rgba(120, 93, 251, 0.7);
+}
+
+.KeepMeLoggedInCheckbox:hover + label::before {
+    background-color: rgba(120, 93, 251, 0.7);
+} */
+
 @media (orientation: portrait) {
     .LoginLeft {
         display: none;

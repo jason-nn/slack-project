@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Toast from "./Components/Toast";
 import Loading from "./Components/Loading";
@@ -20,6 +20,45 @@ export default function App() {
     setTimeout(() => {
         setDisplayLoading(false);
     }, 3300);
+
+    useEffect(() => {
+        if (localStorage.email && localStorage.password) {
+            const email = localStorage.email;
+            const password = localStorage.password;
+
+            const data = {
+                email,
+                password,
+            };
+
+            const config = {
+                method: "post",
+                url: "auth/sign_in",
+                data: data,
+            };
+
+            axios(config)
+                .then((response) => {
+                    setUserData(response?.data?.data);
+                    setUserHeaders(response?.headers);
+                    setError(null);
+                    setMessage(null);
+                    setSuccess("Logging in");
+                    setTimeout(() => {
+                        setSuccess(null);
+                    }, 2000);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setMessage(null);
+                    setSuccess(null);
+                    setError("Error");
+                    setTimeout(() => {
+                        setError(null);
+                    }, 2000);
+                });
+        }
+    }, []);
 
     return (
         <>
