@@ -1,18 +1,18 @@
 @font-face {
     font-family: CircularStd-Black;
-    src: url(/src/Assets/Font/CircularStd-Black.otf);
+    src: url(/src/Font/CircularStd-Black.otf);
 }
 @font-face {
     font-family: CircularStd-Bold;
-    src: url(/src/Assets/Font/CircularStd-Bold.otf);
+    src: url(/src/Font/CircularStd-Bold.otf);
 }
 @font-face {
     font-family: CircularStd-Book;
-    src: url(/src/Assets/Font/CircularStd-Book.otf);
+    src: url(/src/Font/CircularStd-Book.otf);
 }
 @font-face {
     font-family: CircularStd-Medium;
-    src: url(/src/Assets/Font/CircularStd-Medium.otf);
+    src: url(/src/Font/CircularStd-Medium.otf);
 }
 
 * {
