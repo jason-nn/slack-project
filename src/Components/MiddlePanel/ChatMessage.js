@@ -1,5 +1,5 @@
 import React from "react";
-import { generateImage } from "../Utilities/ImageGenerator";
+import { generateImage } from "../../Utilities/ImageGenerator";
 
 export default function ChatMessage({ data, UserData }) {
     const outbound = UserData.id === data.sender.id;

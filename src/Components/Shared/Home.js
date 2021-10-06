@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Logo from "./Logo";
-import Channels from "./Channels";
-import Users from "./Users";
-import Chat from "./Chat";
-import ChatInfo from "./ChatInfo";
-import Logout from "./Logout";
-import UsersModal from "./UsersModal";
-import ChannelsModal from "./ChannelsModal";
-import LeftToggle from "./LeftToggle";
-import RightToggle from "./RightToggle";
-import ChatInfoModal from "./ChatInfoModal";
+import Channels from "../LeftPanel/Channels";
+import Users from "../LeftPanel/Users";
+import Chat from "../MiddlePanel/Chat";
+import ChatInfo from "../RightPanel/ChatInfo";
+import Logout from "../RightPanel/Logout";
+import UsersModal from "../LeftPanel/UsersModal";
+import ChannelsModal from "../LeftPanel/ChannelsModal";
+import ChatInfoModal from "../RightPanel/ChatInfoModal";
+import LeftToggle from "../Toggles/LeftToggle";
+import RightToggle from "../Toggles/RightToggle";
 
 export default function Home({
     UserData,

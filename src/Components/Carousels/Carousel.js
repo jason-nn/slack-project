@@ -1,6 +1,6 @@
 import React from "react";
 import CarouselRow from "./CarouselRow";
-import { avatars } from "../Utilities/ImageGenerator";
+import { avatars } from "../../Utilities/ImageGenerator";
 
 export default function Carousel() {
     return (

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import Carousel from "./Carousel";
+import Carousel from "../Carousels/Carousel";
 import Logo from "./Logo";
 
 export default function Login({

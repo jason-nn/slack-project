@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { generateImage } from "../Utilities/ImageGenerator";
+import { generateImage } from "../../Utilities/ImageGenerator";
 
 export default function Channel({
     data,

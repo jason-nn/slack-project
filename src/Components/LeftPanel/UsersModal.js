@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchResult from "./SearchResult";
+import SearchResult from "../Shared/SearchResult";
 
 export default function UsersModal({
     UserData,

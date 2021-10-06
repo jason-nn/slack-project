@@ -1,5 +1,5 @@
 import React from "react";
-import { generateImage } from "../Utilities/ImageGenerator";
+import { generateImage } from "../../Utilities/ImageGenerator";
 
 export default function ChannelMember({ data, AllUsers }) {
     const ids = AllUsers.map((User) => User.id);

@@ -1,8 +1,8 @@
 import React from "react";
 import ChannelMember from "./ChannelMember";
-import Carousel2 from "./Carousel2";
-import Carousel from "./Carousel";
-import { generateImage } from "../Utilities/ImageGenerator";
+import Carousel2 from "../Carousels/Carousel2";
+import Carousel from "../Carousels/Carousel";
+import { generateImage } from "../../Utilities/ImageGenerator";
 
 export default function ChatInfo({
     DisplayChatName,

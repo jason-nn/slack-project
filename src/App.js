@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Toast from "./Components/Toast";
-import Loading from "./Components/Loading";
-import Home from "./Components/Home";
-import Login from "./Components/Login";
+import Toast from "./Components/Shared/Toast";
+import Loading from "./Components/Shared/Loading";
+import Home from "./Components/Shared/Home";
+import Login from "./Components/Shared/Login";
 
 export default function App() {
     // axios.defaults.baseURL = "http://206.189.91.54/api/v1/";

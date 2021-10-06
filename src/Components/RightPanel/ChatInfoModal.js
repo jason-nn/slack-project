@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchResult from "./SearchResult";
+import SearchResult from "../Shared/SearchResult";
 
 export default function ChatInfoModal({
     UserHeaders,
