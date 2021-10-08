@@ -51,15 +51,30 @@ export default function Channel({
         };
     }, []);
 
+    // useEffect(() => {
+    //     axios(Config.GetChannelMembers(data.id, UserHeaders))
+    //         .then((response) => {
+    //             setLocalMembers(response?.data?.data["channel_members"]);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, [DisplayChat]);
+
     useEffect(() => {
-        axios(Config.GetChannelMembers(data.id, UserHeaders))
-            .then((response) => {
-                setLocalMembers(response?.data?.data["channel_members"]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [DisplayChat]);
+        let GetChannelMembersInterval = setInterval(() => {
+            axios(Config.GetChannelMembers(data.id, UserHeaders))
+                .then((response) => {
+                    setLocalMembers(response?.data?.data["channel_members"]);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 3000);
+        return () => {
+            clearInterval(GetChannelMembersInterval);
+        };
+    }, []);
 
     return (
         <>
