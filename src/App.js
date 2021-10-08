@@ -4,6 +4,7 @@ import Toast from "./Components/Shared/Toast";
 import Loading from "./Components/Shared/Loading";
 import Home from "./Components/Shared/Home";
 import Login from "./Components/Shared/Login";
+import { Config } from "./Utilities/Config";
 
 export default function App() {
     // axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
@@ -31,13 +32,7 @@ export default function App() {
                 password,
             };
 
-            const config = {
-                method: "post",
-                url: "auth/sign_in",
-                data: data,
-            };
-
-            axios(config)
+            axios(Config.SignIn(data))
                 .then((response) => {
                     setUserData(response?.data?.data);
                     setUserHeaders(response?.headers);

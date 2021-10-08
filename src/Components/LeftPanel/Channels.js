@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import Channel from "./Channel";
+import { Config } from "../../Utilities/Config";
 
 export default function Channels({
     UserHeaders,
@@ -16,18 +17,7 @@ export default function Channels({
     setDisplayUserChannelsModal,
 }) {
     useEffect(() => {
-        let config = {
-            method: "get",
-            url: "channels",
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        axios(config)
+        axios(Config.GetAllChannels(UserHeaders))
             .then((response) => {
                 setUserChannels(response?.data?.data);
             })

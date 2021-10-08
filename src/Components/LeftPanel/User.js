@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { generateImage } from "../../Utilities/ImageGenerator";
+import { Config } from "../../Utilities/Config";
 
 export default function User({
     data,
@@ -12,22 +13,11 @@ export default function User({
     setDisplayChatClass,
     setDisplayLeftPanel,
 }) {
-    let config = {
-        method: "get",
-        url: "messages?receiver_id=" + data.id + "&receiver_class=User",
-        headers: {
-            "access-token": UserHeaders["access-token"],
-            client: UserHeaders.client,
-            expiry: UserHeaders.expiry,
-            uid: UserHeaders.uid,
-        },
-    };
-
     const [LastMessage, setLastMessage] = useState(null);
     const [LocalChat, setLocalChat] = useState(null);
 
     useEffect(() => {
-        axios(config)
+        axios(Config.GetMessages(data.id, "User", UserHeaders))
             .then((response) => {
                 const messages = response?.data?.data;
                 setLocalChat(messages);

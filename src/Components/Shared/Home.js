@@ -11,6 +11,7 @@ import ChannelsModal from "../LeftPanel/ChannelsModal";
 import ChatInfoModal from "../RightPanel/ChatInfoModal";
 import LeftToggle from "../Toggles/LeftToggle";
 import RightToggle from "../Toggles/RightToggle";
+import { Config } from "../../Utilities/Config";
 
 export default function Home({
     UserData,
@@ -40,18 +41,7 @@ export default function Home({
     const [DisplayScrollButton, setDisplayScrollButton] = useState(false);
 
     useEffect(() => {
-        let config = {
-            method: "get",
-            url: "users",
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        axios(config)
+        axios(Config.GetAllUsers(UserHeaders))
             .then((response) => {
                 setAllUsers(response?.data?.data);
             })

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchResult from "../Shared/SearchResult";
+import { Config } from "../../Utilities/Config";
 
 export default function ChatInfoModal({
     UserHeaders,
@@ -82,45 +83,24 @@ export default function ChatInfoModal({
                                     );
 
                                     if (index2 === -1) {
-                                        setUserInput("");
-
                                         let data = {
                                             id: DisplayChatID,
                                             member_id,
                                         };
 
-                                        let config = {
-                                            method: "post",
-                                            url: "channel/add_member",
-                                            headers: {
-                                                "access-token":
-                                                    UserHeaders["access-token"],
-                                                client: UserHeaders.client,
-                                                expiry: UserHeaders.expiry,
-                                                uid: UserHeaders.uid,
-                                            },
-                                            data: data,
-                                        };
-
-                                        axios(config)
+                                        axios(
+                                            Config.PostAddMember(
+                                                data,
+                                                UserHeaders
+                                            )
+                                        )
                                             .then((response) => {
-                                                let config = {
-                                                    method: "get",
-                                                    url:
-                                                        "channels/" +
+                                                axios(
+                                                    Config.GetChannelMembers(
                                                         DisplayChatID,
-                                                    headers: {
-                                                        "access-token":
-                                                            UserHeaders[
-                                                                "access-token"
-                                                            ],
-                                                        client: UserHeaders.client,
-                                                        expiry: UserHeaders.expiry,
-                                                        uid: UserHeaders.uid,
-                                                    },
-                                                };
-
-                                                axios(config)
+                                                        UserHeaders
+                                                    )
+                                                )
                                                     .then((response) => {
                                                         setChannelMembers(
                                                             response?.data

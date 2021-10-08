@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import ChatMessage from "./ChatMessage";
 import ChatDate from "./ChatDate";
+import { Config } from "../../Utilities/Config";
 
 export default function Chat({
     UserData,
@@ -121,39 +122,17 @@ export default function Chat({
                             body,
                         };
 
-                        let config = {
-                            method: "post",
-                            url: "messages",
-                            headers: {
-                                "access-token": UserHeaders["access-token"],
-                                client: UserHeaders.client,
-                                expiry: UserHeaders.expiry,
-                                uid: UserHeaders.uid,
-                            },
-                            data: data,
-                        };
-
-                        axios(config)
+                        axios(Config.PostNewMessage(data, UserHeaders))
                             .then((response) => {
                                 sendMessageRef.current.value = null;
 
-                                let config = {
-                                    method: "get",
-                                    url:
-                                        "messages?receiver_id=" +
-                                        DisplayChatID +
-                                        "&receiver_class=" +
+                                axios(
+                                    Config.GetMessages(
+                                        DisplayChatID,
                                         DisplayChatClass,
-                                    headers: {
-                                        "access-token":
-                                            UserHeaders["access-token"],
-                                        client: UserHeaders.client,
-                                        expiry: UserHeaders.expiry,
-                                        uid: UserHeaders.uid,
-                                    },
-                                };
-
-                                axios(config)
+                                        UserHeaders
+                                    )
+                                )
                                     .then((response) => {
                                         setDisplayChat(response?.data?.data);
                                         scrollToBottom();

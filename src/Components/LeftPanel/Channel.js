@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { generateImage } from "../../Utilities/ImageGenerator";
+import { Config } from "../../Utilities/Config";
 
 export default function Channel({
     data,
@@ -18,18 +19,7 @@ export default function Channel({
     const [LocalMembers, setLocalMembers] = useState(null);
 
     useEffect(() => {
-        let config = {
-            method: "get",
-            url: "messages?receiver_id=" + data.id + "&receiver_class=Channel",
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        axios(config)
+        axios(Config.GetMessages(data.id, "Channel", UserHeaders))
             .then((response) => {
                 const messages = response?.data?.data;
                 setLocalChat(messages);
@@ -43,18 +33,7 @@ export default function Channel({
     }, [DisplayChat]);
 
     useEffect(() => {
-        let config = {
-            method: "get",
-            url: "channels/" + data.id,
-            headers: {
-                "access-token": UserHeaders["access-token"],
-                client: UserHeaders.client,
-                expiry: UserHeaders.expiry,
-                uid: UserHeaders.uid,
-            },
-        };
-
-        axios(config)
+        axios(Config.GetChannelMembers(data.id, UserHeaders))
             .then((response) => {
                 setLocalMembers(response?.data?.data["channel_members"]);
             })

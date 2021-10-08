@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import axios from "axios";
+import { Config } from "../../Utilities/Config";
 
 export default function ChannelsModal({
     UserHeaders,
@@ -37,34 +38,12 @@ export default function ChannelsModal({
                                     name: newChannelRef.current.value,
                                     user_ids: "[]",
                                 };
-                                let config = {
-                                    method: "post",
-                                    url: "channels",
-                                    headers: {
-                                        "access-token":
-                                            UserHeaders["access-token"],
-                                        client: UserHeaders.client,
-                                        expiry: UserHeaders.expiry,
-                                        uid: UserHeaders.uid,
-                                    },
-                                    data: data,
-                                };
 
-                                axios(config)
+                                axios(Config.PostNewChannel(data, UserHeaders))
                                     .then((response) => {
-                                        let config = {
-                                            method: "get",
-                                            url: "channels",
-                                            headers: {
-                                                "access-token":
-                                                    UserHeaders["access-token"],
-                                                client: UserHeaders.client,
-                                                expiry: UserHeaders.expiry,
-                                                uid: UserHeaders.uid,
-                                            },
-                                        };
-
-                                        axios(config)
+                                        axios(
+                                            Config.GetAllChannels(UserHeaders)
+                                        )
                                             .then((response) => {
                                                 setUserChannels(
                                                     response?.data?.data
@@ -85,20 +64,9 @@ export default function ChannelsModal({
                                     })
                                     .catch((error) => {
                                         console.log(error);
-
-                                        let config = {
-                                            method: "get",
-                                            url: "channels",
-                                            headers: {
-                                                "access-token":
-                                                    UserHeaders["access-token"],
-                                                client: UserHeaders.client,
-                                                expiry: UserHeaders.expiry,
-                                                uid: UserHeaders.uid,
-                                            },
-                                        };
-
-                                        axios(config)
+                                        axios(
+                                            Config.GetAllChannels(UserHeaders)
+                                        )
                                             .then((response) => {
                                                 setUserChannels(
                                                     response?.data?.data
