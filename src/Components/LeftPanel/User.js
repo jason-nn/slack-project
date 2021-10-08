@@ -16,19 +16,38 @@ export default function User({
     const [LastMessage, setLastMessage] = useState(null);
     const [LocalChat, setLocalChat] = useState(null);
 
+    // useEffect(() => {
+    //     axios(Config.GetMessages(data.id, "User", UserHeaders))
+    //         .then((response) => {
+    //             const messages = response?.data?.data;
+    //             setLocalChat(messages);
+    //             if (messages?.length > 0) {
+    //                 setLastMessage(messages[messages?.length - 1].body);
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, [DisplayChat]);
+
     useEffect(() => {
-        axios(Config.GetMessages(data.id, "User", UserHeaders))
-            .then((response) => {
-                const messages = response?.data?.data;
-                setLocalChat(messages);
-                if (messages?.length > 0) {
-                    setLastMessage(messages[messages?.length - 1].body);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [DisplayChat]);
+        let GetUserMessagesInterval = setInterval(() => {
+            axios(Config.GetMessages(data.id, "User", UserHeaders))
+                .then((response) => {
+                    const messages = response?.data?.data;
+                    setLocalChat(messages);
+                    if (messages?.length > 0) {
+                        setLastMessage(messages[messages?.length - 1].body);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 1500);
+        return () => {
+            clearInterval(GetUserMessagesInterval);
+        };
+    }, []);
 
     return (
         <>

@@ -40,53 +40,32 @@ export default function Home({
     const [DisplayChatInfoModal, setDisplayChatInfoModal] = useState(false);
     const [DisplayScrollButton, setDisplayScrollButton] = useState(false);
 
-    useEffect(() => {
-        axios(Config.GetAllUsers(UserHeaders))
-            .then((response) => {
-                setAllUsers(response?.data?.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
-
-    // let interval;
-
     // useEffect(() => {
-    //     if (DisplayChatID) {
-    //         interval = setInterval(() => {
-    //             let config = {
-    //                 method: "get",
-    //                 url:
-    //                     "messages?receiver_id=" +
-    //                     DisplayChatID +
-    //                     "&receiver_class=" +
-    //                     DisplayChatClass,
-    //                 headers: {
-    //                     "access-token": UserHeaders["access-token"],
-    //                     client: UserHeaders.client,
-    //                     expiry: UserHeaders.expiry,
-    //                     uid: UserHeaders.uid,
-    //                 },
-    //             };
+    //     axios(Config.GetAllUsers(UserHeaders))
+    //         .then((response) => {
+    //             setAllUsers(response?.data?.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, []);
 
-    //             axios(config)
-    //                 .then((response) => {
-    //                     const id = Number(
-    //                         response?.config?.url.split("=")[1].split("&")[0]
-    //                     );
-    //                     if (id === DisplayChatID) {
-    //                         setDisplayChat(response?.data?.data);
-    //                     }
-    //                 })
-    //                 .catch((error) => {
-    //                     console.log(error);
-    //                 });
-    //         }, 1500);
-    //     }
+    // const id = Number(response?.config?.url.split("=")[1].split("&")[0]);
 
-    //     return () => clearInterval(interval);
-    // }, [DisplayChatID, DisplayChatClass]);
+    useEffect(() => {
+        let GetAllUsersInterval = setInterval(() => {
+            axios(Config.GetAllUsers(UserHeaders))
+                .then((response) => {
+                    setAllUsers(response?.data?.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 3000);
+        return () => {
+            clearInterval(GetAllUsersInterval);
+        };
+    }, []);
 
     return (
         <div className="Home">

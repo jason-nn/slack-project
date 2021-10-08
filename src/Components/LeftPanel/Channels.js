@@ -16,14 +16,29 @@ export default function Channels({
     setUserChannels,
     setDisplayUserChannelsModal,
 }) {
+    // useEffect(() => {
+    //     axios(Config.GetAllChannels(UserHeaders))
+    //         .then((response) => {
+    //             setUserChannels(response?.data?.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, []);
+
     useEffect(() => {
-        axios(Config.GetAllChannels(UserHeaders))
-            .then((response) => {
-                setUserChannels(response?.data?.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        let GetAllChannelsInterval = setInterval(() => {
+            axios(Config.GetAllChannels(UserHeaders))
+                .then((response) => {
+                    setUserChannels(response?.data?.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 3000);
+        return () => {
+            clearInterval(GetAllChannelsInterval);
+        };
     }, []);
 
     function renderChannels() {
