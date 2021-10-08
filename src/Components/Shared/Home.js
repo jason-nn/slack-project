@@ -60,43 +60,43 @@ export default function Home({
             });
     }, []);
 
-    let interval;
+    // let interval;
 
-    useEffect(() => {
-        if (DisplayChatID) {
-            interval = setInterval(() => {
-                let config = {
-                    method: "get",
-                    url:
-                        "messages?receiver_id=" +
-                        DisplayChatID +
-                        "&receiver_class=" +
-                        DisplayChatClass,
-                    headers: {
-                        "access-token": UserHeaders["access-token"],
-                        client: UserHeaders.client,
-                        expiry: UserHeaders.expiry,
-                        uid: UserHeaders.uid,
-                    },
-                };
+    // useEffect(() => {
+    //     if (DisplayChatID) {
+    //         interval = setInterval(() => {
+    //             let config = {
+    //                 method: "get",
+    //                 url:
+    //                     "messages?receiver_id=" +
+    //                     DisplayChatID +
+    //                     "&receiver_class=" +
+    //                     DisplayChatClass,
+    //                 headers: {
+    //                     "access-token": UserHeaders["access-token"],
+    //                     client: UserHeaders.client,
+    //                     expiry: UserHeaders.expiry,
+    //                     uid: UserHeaders.uid,
+    //                 },
+    //             };
 
-                axios(config)
-                    .then((response) => {
-                        const id = Number(
-                            response?.config?.url.split("=")[1].split("&")[0]
-                        );
-                        if (id === DisplayChatID) {
-                            setDisplayChat(response?.data?.data);
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            }, 1500);
-        }
+    //             axios(config)
+    //                 .then((response) => {
+    //                     const id = Number(
+    //                         response?.config?.url.split("=")[1].split("&")[0]
+    //                     );
+    //                     if (id === DisplayChatID) {
+    //                         setDisplayChat(response?.data?.data);
+    //                     }
+    //                 })
+    //                 .catch((error) => {
+    //                     console.log(error);
+    //                 });
+    //         }, 1500);
+    //     }
 
-        return () => clearInterval(interval);
-    }, [DisplayChatID, DisplayChatClass]);
+    //     return () => clearInterval(interval);
+    // }, [DisplayChatID, DisplayChatClass]);
 
     return (
         <div className="Home">

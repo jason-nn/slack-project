@@ -24,11 +24,13 @@ export default function User({
     };
 
     const [LastMessage, setLastMessage] = useState(null);
+    const [LocalChat, setLocalChat] = useState(null);
 
     useEffect(() => {
         axios(config)
             .then((response) => {
                 const messages = response?.data?.data;
+                setLocalChat(messages);
                 if (messages?.length > 0) {
                     setLastMessage(messages[messages?.length - 1].body);
                 }
@@ -43,17 +45,11 @@ export default function User({
             <div
                 className="Channel"
                 onClick={() => {
-                    axios(config)
-                        .then((response) => {
-                            setDisplayChat(response?.data?.data);
-                            setDisplayChatName(data.uid);
-                            setDisplayChatID(data.id);
-                            setDisplayChatClass("User");
-                            setDisplayLeftPanel(false);
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                        });
+                    setDisplayChat(LocalChat);
+                    setDisplayChatName(data.uid);
+                    setDisplayChatID(data.id);
+                    setDisplayChatClass("User");
+                    setDisplayLeftPanel(false);
                 }}
             >
                 <div>
