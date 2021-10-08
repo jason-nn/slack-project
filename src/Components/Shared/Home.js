@@ -40,15 +40,15 @@ export default function Home({
     const [DisplayChatInfoModal, setDisplayChatInfoModal] = useState(false);
     const [DisplayScrollButton, setDisplayScrollButton] = useState(false);
 
-    // useEffect(() => {
-    //     axios(Config.GetAllUsers(UserHeaders))
-    //         .then((response) => {
-    //             setAllUsers(response?.data?.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios(Config.GetAllUsers(UserHeaders))
+            .then((response) => {
+                setAllUsers(response?.data?.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     // const id = Number(response?.config?.url.split("=")[1].split("&")[0]);
 

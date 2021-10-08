@@ -18,19 +18,19 @@ export default function Channel({
     const [LocalChat, setLocalChat] = useState(null);
     const [LocalMembers, setLocalMembers] = useState(null);
 
-    // useEffect(() => {
-    //     axios(Config.GetMessages(data.id, "Channel", UserHeaders))
-    //         .then((response) => {
-    //             const messages = response?.data?.data;
-    //             setLocalChat(messages);
-    //             if (messages?.length > 0) {
-    //                 setLastMessage(messages[messages?.length - 1].body);
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, [DisplayChat]);
+    useEffect(() => {
+        axios(Config.GetMessages(data.id, "Channel", UserHeaders))
+            .then((response) => {
+                const messages = response?.data?.data;
+                setLocalChat(messages);
+                if (messages?.length > 0) {
+                    setLastMessage(messages[messages?.length - 1].body);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [DisplayChat]);
 
     useEffect(() => {
         let GetChannelMessagesInterval = setInterval(() => {
@@ -51,15 +51,15 @@ export default function Channel({
         };
     }, []);
 
-    // useEffect(() => {
-    //     axios(Config.GetChannelMembers(data.id, UserHeaders))
-    //         .then((response) => {
-    //             setLocalMembers(response?.data?.data["channel_members"]);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, [DisplayChat]);
+    useEffect(() => {
+        axios(Config.GetChannelMembers(data.id, UserHeaders))
+            .then((response) => {
+                setLocalMembers(response?.data?.data["channel_members"]);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [DisplayChat]);
 
     useEffect(() => {
         let GetChannelMembersInterval = setInterval(() => {
