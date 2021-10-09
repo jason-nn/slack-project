@@ -65,7 +65,7 @@ password: bubble123
 -   Users added are saved in local storage
 -   Fully responsive, mobile view can be seen either by inspecting or viewing on a mobile phone
 -   Fun toggle on right panel when user chat is selected, allows you to switch between the default background color and a carousel of the user's profile picture :D
--   search when inviting a user to a channel or adding a user
+-   Search all users when inviting a user to a channel or adding a user
 
 <br/>
 
