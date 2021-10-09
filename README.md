@@ -4,8 +4,6 @@
 
 ## Installation
 
----
-
 ```
 git clone https://github.com/jason-nn/slack-project.git
 ```
@@ -26,15 +24,11 @@ npm start
 
 ## Demo
 
----
-
 https://jason-nn.github.io/slack-project/
 
 <br/>
 
 ## Sample Credentials\*
-
----
 
 email: bubble@bubble.com
 <br/>
@@ -46,8 +40,6 @@ password: bubble123
 <br/>
 
 ## Features
-
----
 
 ### Main Features
 
