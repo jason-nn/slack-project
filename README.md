@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Slack Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+---
 
-### `npm start`
+```
+git clone https://github.com/jason-nn/slack-project.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+cd slack-project
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+npm install
+```
 
-### `npm test`
+```
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
-### `npm run build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://jason-nn.github.io/slack-project/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
-### `npm run eject`
+## Sample Credentials\*
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+email: bubble@bubble.com
+<br/>
+password: bubble123
+<br/>
+<br/> \*_for the purpose of viewing what full chats would look like and testing the scroll feature without having to send multiple messages_
+</br> \*_please do not send new messages with this account_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Features
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Main Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   User is able to create account with email and password
+-   User is able to login with credentials
+-   User is able to create new channel
+-   User is able to add users to a channel
+-   User is able to send message to another user
+-   User is able to send message to a channel
+-   User is able to receive messages from other users
+-   User is able to receive messages from channels
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Extra Features
 
-### Analyzing the Bundle Size
+-   User is able to save credentials to local storage if _keep me logged in_ is checked on login
+-   Chat is scrolled down to latest message when channel or user is selected, when new message is sent, and when the scroll down button is clicked
+-   Scroll down button that appears if user is not viewing the latest chat messages
+-   User channels are polled so if a user is invited to a channel from another client, the channel will show up on the left panel
+-   Last messages for every channel and user on the left panel
+-   Last messages are polled so if a user sends you a new message from another client, you will see the new message under the channel or user name in the left panel
+-   Users added are saved in local storage
+-   Fully responsive, mobile view can be seen either by inspecting or viewing on a mobile phone
+-   Fun toggle on right panel when user chat is selected, allows you to switch between the default background color and a carousel of the user's profile picture :D
+-   search when inviting a user to a channel or adding a user
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br/>
 
-### Making a Progressive Web App
+### Caveats
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Chat is not polled as there were bugs that occurred where the previously selected chat was persisting, which means if a user or channel sends you a new message, you will be able to see it on the left panel with the last message preview but will be unable to see it in the chat middle panel unless you click the user or channel again, or alternatively send a new message
+-   Channel members are not polled as a similar bug occurred where channel members of the previously selected channel were persisting, updated channel members can currently be seen once the channel is clicked again or if a new message is sent in the channel
