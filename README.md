@@ -22,6 +22,12 @@ npm start
 
 <br/>
 
+## Deployment
+
+```
+npm run deploy
+```
+
 ## Demo
 
 https://jason-nn.github.io/slack-project/
