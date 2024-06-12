@@ -7,8 +7,8 @@ import Login from './Components/Shared/Login';
 import { Config } from './Utilities/Config';
 
 export default function App() {
-  // axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
-  axios.defaults.baseURL = 'https://slack-avion.netlify.app/api/v1';
+  axios.defaults.baseURL = "http://206.189.91.54/api/v1/";
+  //axios.defaults.baseURL = 'https://slack-avion.netlify.app/api/v1';
 
   const [UserData, setUserData] = useState(null);
   const [UserHeaders, setUserHeaders] = useState(null);
